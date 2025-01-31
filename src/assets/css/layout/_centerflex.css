@@ -1,0 +1,30 @@
+.centerflex {
+  --_centerflex-gap: var(--gs-gap, 1rem);
+  --_centerflex-threshold: var(--centerflex--threshold, 50rem);
+
+  /* ↓ Save the large negative or large positive value to a variable */
+  --multiplier: calc(666 * (var(--_centerflex-threshold) - 100%));
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--centerflex-gap-vertical, var(--_centerflex-gap)) / 2)
+    var(--_centerflex-gap);
+
+  &::before {
+    content: "";
+    flex-grow: 666;
+    margin: 0;
+    background: #f09;
+    /* ↓ If --multiplier is negative, use 0px instead */
+    flex-basis: max(0px, var(--multiplier));
+  }
+
+  & > * {
+    flex-grow: 1;
+
+    &:first-child {
+      order: -1;
+    }
+  }
+}

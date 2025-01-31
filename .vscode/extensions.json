@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "csstools.postcss",
+    "vunguyentuan.vscode-postcss",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind"
+  ]
+}

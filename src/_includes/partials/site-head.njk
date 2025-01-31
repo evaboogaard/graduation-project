@@ -1,0 +1,15 @@
+<header class="site-head | bg-black text-white" style="padding-block: 2rem;">
+  <div class="wrapper">
+    <nav aria-label="Main">
+      <ul class="cluster" role="list">
+        {% for item in navigation.items %}
+          <li>
+            <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+              {{ item.text }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

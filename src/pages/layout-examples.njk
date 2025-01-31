@@ -1,0 +1,140 @@
+---
+title: "Home"
+layout: "layouts/base.njk"
+permalink: /layout-examples/index.html
+---
+
+<style>
+  body {
+    font-family: 'Nimbus Mono PS', 'Courier New', monospace;
+    background: #f5f5f5;
+  }
+  .item {
+    width: min(20rem, 100%);
+    height: 10rem;
+    background: #f09;
+    font-weight: bold;
+    padding: 1rem;
+  }
+
+  .pill {
+    padding: 0.5rem;
+    border-radius: calc(1px * infinity);
+    background: #09f;
+    font-weight: bold;
+    color: white;
+    min-width: 5ch;
+    text-align: center;
+  }
+
+  section {
+    padding: 1rem;
+    overflow: hidden;
+    resize: horizontal;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background: #fff;
+  }
+
+  .auto-grid .item {
+    width: 100%;
+  }
+</style>
+
+<div class="wrapper | stack-s" style="padding-block: 2rem;">
+  <h1>Layout examples</h1>
+  <p>Don't forget to delete this page before it goes to production :-)</p>
+  <section class="stack-s">
+    <h2>Auto-Grid</h2>
+    <h3>Customization</h3>
+    <p>
+      --auto-grid-min-size: 16rem;<br>
+      --auto-grid-max-columns: infinity; (--> no max columns)<br>
+      --auto-grid-gap: 1rem;<br>
+      --auto-grid-gap-vertical: (defaults to --auto-grid-gap)
+    </p>
+    <div class="auto-grid" style="--auto-grid-max-columns: 3;">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </section>
+
+  <section class="stack-s">
+    <h2>Centerflex</h2>
+    <h3>Customization</h3>
+    <p>
+      --centerflex-threshold: 50rem;<br>
+      --centerflex-gap: 1rem;<br>
+      --centerflex-gap-vertical: (defaults to --centerflex-gap)
+    </p>
+    <div class="centerflex">
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </section>
+
+  <section class="stack-s">
+    <h2>Cluster</h2>
+    <h3>Customization</h3>
+    <p>
+      --cluster-justification: flex-start;<br>
+      --cluster-gap: 1rem;<br>
+      --cluster-gap-vertical: (defaults to --cluster-gap)
+    </p>
+    <div class="cluster">
+      <div class="pill">One</div>
+      <div class="pill">Two</div>
+      <div class="pill">3</div>
+      <div class="pill">4</div>
+      <div class="pill">Fiiiiiive</div>
+      <div class="pill">Sechs</div>
+    </div>
+  </section>
+
+  <section class="stack-s">
+    <h2>Grid switcher</h2>
+    <h3>Customization</h3>
+    <p>
+      --gs-columns-small: 1;<br>
+      --gs-columns-medium: 2;<br>
+      --gs-columns-large: 4;<br>
+      --gs-bp-medium: 25rem;<br>
+      --gs-bp-large: 50rem;<br>
+      --gs-gap: 1rem;<br>
+      --gs-gap-vertical: (defaults to --gs-gap)
+    </p>
+    <div class="grid-switcher">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+  </section>
+
+  <section class="stack-s">
+    <h2>Sidebar (sidebar-left and sidebar-right)</h2>
+    <h3>Customization</h3>
+    <p>
+      --sidebar-width: 20rem;<br>
+      --sidebar-threshold: 50%;<br>
+      --sidebar-gap: 1rem;<br>
+      --sidebar-gap-vertical: (defaults to --sidebar-gap)
+    </p>
+    <div class="sidebar-left">
+      <div class="item">Sidebar</div>
+      <div class="item">Content</div>
+    </div>
+
+    <div class="sidebar-right">
+      <div class="item">content</div>
+      <div class="item">Sidebar</div>
+    </div>
+  </section>
+
+</div>

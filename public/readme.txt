@@ -1,0 +1,1 @@
+You can place any file in the public folder and it will be served as is.

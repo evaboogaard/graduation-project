@@ -1,0 +1,13 @@
+@layer fonts, reset, layout, utils, blocks;
+
+@import "./_media.css";
+@import "./_fonts.css" layer(fonts);
+@import "./_reset.css" layer(reset);
+
+@import-glob "./blocks/**/_*.css" layer(blocks);
+@import-glob "./layout/**/_*.css" layer(layout);
+@import-glob "./utilities/**/_*.css" layer(utils);
+
+@import "tailwindcss/base" layer(reset);
+@import "tailwindcss/components" layer(layout);
+@import "tailwindcss/utilities" layer(utils);

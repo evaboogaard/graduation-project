@@ -1,0 +1,70 @@
+---
+title: "Home"
+layout: "layouts/base.njk"
+permalink: /
+---
+
+<div class="wrapper | stack-m" style="padding-block: 2rem;">
+  <h1 class="text-step-4 mb-xl">11ty Boilerplate</h1>
+
+  <h2 class="text-step-3">Get started</h2>
+
+  <p>Simply run <code class="font-mono">npm install</code> and start the server with <code class="font-mono">npm start</code>.</p>
+
+  <p>For production do <code class="font-mono">npm run production</code> this adds:</p>
+
+  <ul>
+    <li>html-min</li>
+    <li>css-purge (all css is purged and then added inline)</li>
+  </ul>
+
+  <h2 class="text-step-3 my-stack-space-l">Basic information</h2>
+
+  <ul>
+    <li>Basic site information is stored under `src/_data/site.json`</li>
+    <li>...</li>
+  </ul>
+
+  <h2 class="text-step-3 my-stack-space-l">Raeadable Date Filter</h2>
+
+  <p>LOCALE variable is set in the `.env` to control the language of the date display.</p>
+
+  {% set sampleDate = "2017-12-27T10:00:00Z" %}
+  <p>
+    <strong>Date set:</strong>
+    {{ sampleDate }}<br>
+    <strong>Readable:</strong>
+    {{ sampleDate | readableDate }}<br>
+    <strong>custom Format:</strong>
+    {{ sampleDate | readableDate({month: "short", day: "numeric"}) }}
+  </p>
+
+  <h2 class="text-step-3">ISO Date Filter Filter</h2>
+
+  <p>
+    {% set sampleDate = "05.01.2020 15:00 GMT+01:00" %}
+    <strong>Date set:</strong>
+    {{ sampleDate }}<br>
+    <strong>ISO Format for &lt;time&gt; Elements:</strong>
+    {{ sampleDate | toISODate }}
+  </p>
+
+  <h2>SVG Icons</h2>
+
+  <p>
+    SVG Icons can be placed in `src/icons`. One single icon file will be generated, that can be
+    referenced. There's a shortcode in place. It needs the `icon` property. `alt` and `width`
+    are optional.
+  </p>
+
+  <div class="cluster">
+    {% icon icon = "twitter",
+    width = "2rem" %}
+    {% icon icon = "github",
+    alt = "Github",
+    width = "2rem" %}
+    {% icon icon = "linkedin",
+    alt = "LinkedIn",
+    width = "2rem" %}
+  </div>
+</div>
