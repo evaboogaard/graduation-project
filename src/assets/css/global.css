@@ -3,6 +3,7 @@
 @import "./_media.css";
 @import "./_fonts.css" layer(fonts);
 @import "./_reset.css" layer(reset);
+@import "./_root.css" layer(layout);
 
 @import-glob "./blocks/**/_*.css" layer(blocks);
 @import-glob "./layout/**/_*.css" layer(layout);

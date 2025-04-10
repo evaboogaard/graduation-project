@@ -21,18 +21,21 @@
       <!-- We're not in production mode -->
       <link rel="stylesheet" href="/assets/css/global.css" />
     {% endif %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&family=Lora&family=Poppins&family=Slabo+27px&family=Montserrat&family=Merriweather&family=Playfair+Display&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    {% include "partials/site-head.njk" %}
+    {# {% include "partials/site-head.njk" %} #}
 
-    <main tabindex="-1" id="main-content" class="leading-snug stack-s">
+    <main tabindex="-1" id="main-content" class="leading-snug">
       {% block content %}
         {{ content | safe }}
       {% endblock %}
     </main>
 
-    {% include "partials/site-foot.njk" %}
+    {# {% include "partials/site-foot.njk" %} #}
+
     {% script src = "global.js" %}
   </body>
 </html>

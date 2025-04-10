@@ -1,0 +1,5 @@
+:root {
+  --transition-base: 0.25s ease-out;
+  --control-panel-font: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+    Consolas, "DejaVu Sans Mono", monospace;
+}

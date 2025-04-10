@@ -8,13 +8,24 @@ import { interpolate } from "../../utils/css/interpolate";
  * Or you can write your own scale manually with the `interpolate` function
  */
 export const spacing = {
-  xs: "0.25rem",
-  s: "0.5rem",
-  m: "1rem",
-  l: "2rem",
-  xl: "4rem",
-  "2xl": "8rem",
-  "3xl": interpolate({ min: 128, max: 256, vwMin: 480, vwMax: 1440 }),
+  "3xs": "clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem)",
+  "2xs": "clamp(0.5625rem, 0.5051rem + 0.2353vw, 0.6875rem)",
+  xs: "clamp(0.875rem, 0.8176rem + 0.2353vw, 1rem)",
+  s: "clamp(1.125rem, 1.039rem + 0.3529vw, 1.3125rem)",
+  m: "clamp(1.6875rem, 1.5441rem + 0.5882vw, 2rem)",
+  l: "clamp(2.25rem, 2.0779rem + 0.7059vw, 2.625rem)",
+  xl: "clamp(3.375rem, 3.1169rem + 1.0588vw, 3.9375rem)",
+  "2xl": "clamp(4.5rem, 4.1559rem + 1.4118vw, 5.25rem)",
+  "3xl": "clamp(6.75rem, 6.2338rem + 2.1176vw, 7.875rem)",
+
+  "3xs-2xs": "clamp(0.3125rem, 0.1404rem + 0.7059vw, 0.6875rem)",
+  "2xs-xs": "clamp(0.5625rem, 0.3618rem + 0.8235vw, 1rem)",
+  "xs-s": "clamp(0.875rem, 0.6743rem + 0.8235vw, 1.3125rem)",
+  "s-m": "clamp(1.125rem, 0.7235rem + 1.6471vw, 2rem)",
+  "m-l": "clamp(1.6875rem, 1.2574rem + 1.7647vw, 2.625rem)",
+  "l-xl": "clamp(2.25rem, 1.4757rem + 3.1765vw, 3.9375rem)",
+  "xl-2xl": "clamp(3.375rem, 2.5147rem + 3.5294vw, 5.25rem)",
+  "2xl-3xl": "clamp(4.5rem, 2.9515rem + 6.3529vw, 7.875rem)",
 };
 
 /**

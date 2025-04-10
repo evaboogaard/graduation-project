@@ -1,0 +1,29 @@
+button,
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.button--primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.5px solid var(--color-white);
+  padding: var(--space-2xs);
+
+  svg {
+    transition: var(--transition-base);
+  }
+
+  &:hover {
+    translate: 3px -3px;
+    box-shadow: -3px 3px 0 var(--color-white);
+
+    svg {
+      rotate: 90deg;
+    }
+  }
+}

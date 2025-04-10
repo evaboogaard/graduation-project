@@ -23,6 +23,7 @@ export default {
   theme: {
     colors: colors,
     spacing: spacing,
+    padding: spacing,
     fontSize: fontSize,
     lineHeight: lineHeight,
     fontWeight: fontWeight,
@@ -39,6 +40,7 @@ export default {
     "fontFamily",
     "fontStyle",
     "textDecoration",
+    "padding",
   ],
   blocklist: ["container"],
   experimental: {
@@ -95,7 +97,7 @@ export default {
           }),
         },
 
-        { values: theme("fontWeight") } // => the values for the generated utilities above are taken from the theme tokens which are defined above in the `theme` object
+        { values: theme("fontWeight") }, // => the values for the generated utilities above are taken from the theme tokens which are defined above in the `theme` object
       );
 
       // Stack
@@ -114,7 +116,7 @@ export default {
             "--stack-space": value,
           }),
         },
-        { values: theme("spacing") }
+        { values: theme("spacing") },
       );
     }),
   ],

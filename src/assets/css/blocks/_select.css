@@ -1,0 +1,50 @@
+.select-input-container {
+  display: flex;
+  gap: var(--space-s);
+  align-items: center;
+
+  .custom-select {
+    position: relative;
+    flex-grow: 1;
+
+    &::before {
+      --size: 0.7rem;
+      content: "";
+      position: absolute;
+      width: var(--size);
+      height: var(--size);
+      top: 50%;
+      right: var(--space-2xs);
+      translate: 0 -50%;
+      background-image: url('data:image/svg+xml,<svg width="14" height="28" viewBox="0 0 14 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="-1.5" x2="18.4391" y2="-1.5" transform="matrix(-0.650791 -0.759257 -0.650791 0.759257 12 28)" stroke="white" stroke-width="3"/><line y1="-1.5" x2="18.4391" y2="-1.5" transform="matrix(-0.650791 0.759257 -0.650791 -0.759257 12 0)" stroke="white" stroke-width="3"/></svg>');
+      background-size: 100% 100%;
+      rotate: -90deg;
+    }
+
+    &:hover {
+      select {
+        border-color: var(--color-white);
+      }
+    }
+
+    select {
+      background-color: transparent;
+      padding: 0.35rem var(--space-2xs);
+      appearance: none;
+      width: 100%;
+      transition: var(--transition-base);
+      cursor: pointer;
+      color: var(--color-lightgray);
+
+      &:focus-visible {
+        border-radius: 0;
+        outline: 1px dashed var(--color-white);
+        outline-offset: 3px;
+      }
+
+      &:hover {
+        border-color: var(--color-white);
+      }
+    }
+  }
+}
