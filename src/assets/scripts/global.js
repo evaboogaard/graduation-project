@@ -10,6 +10,7 @@ import "./url-params.js";
 import "./type-control-panel.js";
 import "./main-control-panel.js";
 import "./grid-debugger.js";
+import "./color-picker.js";
 
 import { calculateTypeScale } from "https://esm.sh/utopia-core";
 

@@ -210,8 +210,8 @@ img {
 
 body {
   margin: 2rem 0;
-  background: #faf4ed;
-  color: var(--color-primary);
+  background: var(--color-background);
+  color: var(--color-body);
   font-family: var(--font-body);
   font-optical-sizing: auto;
   font-weight: 400;
@@ -219,15 +219,13 @@ body {
   accent-color: var(--color-secondary);
 }
 
-.serif,
-h1,
-.h1-styling,
-h2,
-.h2-styling,
-h3,
-.h3-styling,
-h4,
-.h4-styling {
+:is(h1, .h1-styling, h2, .h2-styling, h3, .h3-styling, h4, .h4-styling):not(
+    #main-control-panel h1,
+    #main-control-panel h2,
+    #main-control-panel h3,
+    .alert h3
+  ) {
+  color: var(--color-primary);
   font-family: var(--font-headline);
   font-weight: 400;
   font-style: normal;
@@ -286,11 +284,14 @@ p,
 
 .intro {
   font-size: var(--step-1);
-  color: var(--color-lightgray);
   line-height: 1.4;
   text-wrap: pretty;
   margin-block-start: 0.7em;
   letter-spacing: 0;
+}
+
+.full-width {
+  background-color: var(--color-primary);
 }
 
 .quote {
