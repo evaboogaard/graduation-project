@@ -1,0 +1,16 @@
+{
+  "needBasedProfile": {
+    "naam": "De Optimalisator",
+    "beschrijving": "Ervaren in zowel design als development, vaak in een leidinggevende rol. Werkt bij een vooruitstrevende agency en heeft invloed op tools en processen.",
+    "motivatie": [
+      "Werken volgens de nieuwste standaarden en technologieën",
+      "Kwaliteit en consistentie binnen het team",
+      "Nieuwe werkwijzen ontdekken die ontwerp en code dichter bij elkaar brengen"
+    ],
+    "behoeften": [
+      "Betere workflow tussen design en development",
+      "Een tool om direct in de browser een responsive typescale te creëren en te testen",
+      "Het meenemen van interactieve states en toegankelijkheid in het ontwerpproces"
+    ]
+  }
+}

@@ -18,7 +18,10 @@ button,
     transition: var(--transition-base);
   }
 
-  &:hover {
+  &:hover,
+  &:focus-visible,
+  &:has(input[type="file"]:hover),
+  &:has(input[type="file"]:focus-visible) {
     translate: 3px -3px;
     box-shadow: -3px 3px 0 var(--color-white);
 

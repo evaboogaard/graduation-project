@@ -3,6 +3,7 @@ const colors = [
   { id: "secondary", cssVar: "--color-secondary" },
   { id: "body", cssVar: "--color-body" },
   { id: "background", cssVar: "--color-background" },
+  { id: "hover-bg", cssVar: "--color-btn-hover-bg" },
 ];
 
 colors.forEach(({ id, cssVar }) => {

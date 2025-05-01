@@ -121,6 +121,18 @@ html:has(.main-control-panel__button[aria-expanded="true"]) {
     [full-end];
 }
 
+/** TWO COLUMN LAYOUT - @todo **/
+.page-layout.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: clamp(var(--space-s), 25vw, 25rem);
+  gap: var(--space-m-l); /* adjust the gap between columns */
+}
+
+.page-layout.two-column > * {
+  grid-column: span 1;
+}
+
 /** CLASSES **/
 .full {
   grid-column: full;

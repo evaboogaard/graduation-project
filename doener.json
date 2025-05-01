@@ -1,0 +1,16 @@
+{
+  "needBasedProfile": {
+    "naam": "De Doener",
+    "beschrijving": "Beginnende developer of designer, vaak werkend met Wordpress of een ander WYSIWYG CMS. Heeft weinig affiniteit met typografie of UX, maar wil het werk wel netjes afleveren.",
+    "motivatie": [
+      "Werk binnen werktijd afronden zonder stress",
+      "Geen behoefte aan verdieping buiten werktijden",
+      "Gewoon het werk goed willen doen, zonder gedoe"
+    ],
+    "behoeften": [
+      "Eenvoudige en snelle oplossingen voor responsiveness",
+      "Ondersteuning bij het maken van responsive keuzes",
+      "Oplossingen die ‘gewoon werken’, zonder te diep in te gaan op technisch gedoe"
+    ]
+  }
+}

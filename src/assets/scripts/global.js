@@ -11,6 +11,7 @@ import "./type-control-panel.js";
 import "./main-control-panel.js";
 import "./grid-debugger.js";
 import "./color-picker.js";
+import "./interaction.js";
 
 import { calculateTypeScale } from "https://esm.sh/utopia-core";
 
@@ -88,6 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Recalculate and apply font steps
     updateFontSteps();
+
+    updateCSSOutput();
   }
 
   // Function to handle slider changes
@@ -116,17 +119,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const sliderValue = lineHeightSlider.value;
     lineHeightValue.textContent = sliderValue;
 
-    // Select all elements with the class 'page-layout'
+    currentOptions.lineHeight = parseFloat(sliderValue);
+
     const pageLayoutElements = document.querySelectorAll(".page-layout");
     const fullWidthElements = document.querySelectorAll(".full-width");
 
-    // Apply the CSS variable to each 'page-layout' element
     pageLayoutElements.forEach((element) => {
       element.style.setProperty("--line-height", sliderValue);
     });
     fullWidthElements.forEach((element) => {
       element.style.setProperty("--line-height", sliderValue);
     });
+
+    updateCSSOutput();
   }
 
   // Add an event listener to handle input changes on the slider
@@ -143,4 +148,62 @@ document.addEventListener("DOMContentLoaded", () => {
   handleSliderChange();
   // Initialize the CSS variable and display with the slider's initial value
   handleContentWidthChange();
+
+  // Function to generate the CSS as text
+  function generateCSSOutput(fontSteps) {
+    let cssText = "";
+
+    fontSteps.forEach((stepObj) => {
+      const varName = `--step-${stepObj.step}`;
+      const varValue = stepObj.clamp;
+      cssText += `${varName}: ${varValue};\n`;
+    });
+
+    cssText += `--min-type-scale: ${currentOptions.minTypeScale};\n`;
+    cssText += `--max-type-scale: ${currentOptions.maxTypeScale};\n`;
+    cssText += `--content-max-width: ${
+      currentOptions.contentWidth || 37.5
+    }rem;\n`;
+    cssText += `--line-height: ${currentOptions.lineHeight || 1.5};\n`;
+
+    return `:root {\n${cssText}}`;
+  }
+
+  // Function to copy text to clipboard
+  function copyTextToClipboard(text) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("CSS variables copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
+
+  function updateCSSOutput() {
+    const fontSteps = calculateTypeScale(currentOptions);
+    const cssText = generateCSSOutput(fontSteps);
+    const cssOutput = document.getElementById("cssOutput");
+    cssOutput.textContent = cssText;
+  }
+
+  // Copy to clipboard
+  function copyTextToClipboard(text) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("CSS variables copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  }
+
+  const copyButton = document.getElementById("copyCSSButton");
+
+  copyButton.addEventListener("click", () => {
+    const cssOutput = document.getElementById("cssOutput");
+    copyTextToClipboard(cssOutput.textContent);
+  });
 });

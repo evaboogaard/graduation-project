@@ -1,0 +1,47 @@
+.color-inputs {
+  width: 100%;
+  height: 3rem;
+  position: relative;
+  padding-block-start: var(--space-3xs);
+
+  input[type="text"] {
+    position: absolute;
+    left: var(--space-xs);
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+    top: calc(50% + var(--space-3xs));
+    translate: 0 -50%;
+    max-width: 8ch;
+  }
+}
+
+input[type="color"] {
+  position: absolute;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}

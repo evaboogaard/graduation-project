@@ -1,0 +1,70 @@
+.main-control-panel__interaction {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-styling {
+  text-decoration: underline;
+  color: var(--color-secondary);
+}
+
+.button-styling {
+  font-size: var(--step-0);
+  border-radius: var(--btn-radius, 1rem);
+  padding-block: var(--btn-padding-block, 0.5rem);
+  padding-inline: var(--btn-padding-inline, 1rem);
+  border: 2px solid var(--color-secondary);
+  width: fit-content;
+  margin-inline: auto;
+
+  &:hover {
+    transform: var(--btn-hover-transform, translateY(-0.2rem));
+    background-color: var(--color-btn-hover-bg, var(--color-secondary));
+    transition: var(--transition-base);
+  }
+
+  &:active {
+    transform: var(--btn-active-transform, scale(0.98));
+    background-color: var(
+      --btn-active-bg,
+      color-mix(in srgb, var(--color-secondary), black 30%)
+    );
+  }
+
+  &:focus-visible {
+    outline: var(--btn-focus-outline, 3px dotted white);
+    outline-offset: var(--btn-focus-outline-offset, 2px);
+  }
+}
+
+.drag-container {
+  position: relative;
+  height: var(--space-2xl);
+  width: var(--space-2xl);
+
+  .drag-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+
+  .drag-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--color-mediumgray);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    transition: 0.05s ease-out;
+  }
+
+  .drag-handle:active {
+    cursor: grabbing;
+    background: var(--color-lightgray);
+  }
+}

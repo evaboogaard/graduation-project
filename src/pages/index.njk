@@ -7,7 +7,7 @@ permalink: /
 <div class="page-layout">
   <h1 class="popout">Typography: The Art of Making Fonts Fight</h1>
 
-  <p class="popout">Typography is an ancient and noble craft, dating back to the days when monks meticulously hand-drew letters while cursing their quills. Today, we have the privilege of choosing fonts with a mere click, yet somehow, we still manage to mess it up.</p>
+  <p class="popout">Typography is an ancient and noble craft, dating back to the days when <a class="link-styling" href="#">monks meticulously hand-drew letters</a> while cursing their quills. Today, we have the privilege of choosing fonts with a mere click, yet somehow, we still manage to mess it up.</p>
 
   <h2>The War of the Fonts</h2>
 
@@ -17,6 +17,7 @@ permalink: /
 
   <div class="full-width text-white p-l-xl">
     <blockquote class="quote extend serif">“Choosing the wrong font is like wearing Crocs to a job interview – it sends a message, and not a good one.”</blockquote>
+    <button class="button-styling">Choose Wisely</button>
   </div>
 
   <p>Fonts have personalities. Arial is the dependable office worker who gets things done. Garamond is the refined intellectual with a taste for fine literature. Impact is the guy at the gym who only works on his upper body. And then there’s Wingdings, the drunk uncle who shows up at weddings speaking a language no one understands.</p>
@@ -206,20 +207,105 @@ permalink: /
             <input type="text" id="background-hex" name="background-hex" value="#faf4ed" maxlength="7">
           </div>
         </div>
-
       </div>
     </div>
 
-    <div class="main-control-panel__content stack-xs">
+    <!-- <div class="main-control-panel__content stack-xs">
       <h2>Content</h2>
       <div class="content-preview">
         <p class="h1-styling">Heading 1</p>
         <p class="h2-styling">Heading 2</p>
         <p class="h3-styling">Heading 3</p>
         <p class="p-styling">Paragraph</p>
-        <p class="a-styling">Link</p>
+        <a class="link-styling" tabindex="-1">Link</a>
         <p class="button-styling">Button</p>
         <p class="blockquote-styling">Blockquote</p>
+      </div>
+    </div> -->
+
+    <div class="main-control-panel__css-output stack-xs">
+      <h2>Generated Type Scale</h2>
+      <pre class="css-output" id="cssOutput"></pre>
+      <button class="button--primary" id="copyCSSButton">Copy CSS Variables</button>
+    </div>
+
+    <div class="main-control-panel__interaction stack-s">
+      <h2>Interactive elements</h2>
+      <!-- <label for="show-link">
+        Link
+        <input id="show-link" type="checkbox" checked>
+      </label>
+      <label for="show-button">
+        Button
+        <input id="show-button" type="checkbox" checked>
+      </label>
+      <label for="show-form">
+        Form
+        <input id="show-form" type="checkbox">
+      </label> -->
+      <div class="stack-xs">
+        <h2>Button</h2>
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Border Radius</label>
+          </div>
+          <input type="range" id="btnRadius" min="0" max="2" step="0.1" value="1">
+        </div>
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Padding Top/Bottom</label>
+          </div>
+          <input type="range" id="btnPaddingBlock" min="0" max="2" step="0.1" value="0.5">
+        </div>
+        
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Padding Left/Right</label>
+          </div>
+          <input type="range" id="btnPaddingInline" min="0" max="4" step="0.1" value="1">
+        </div>
+      </div>
+
+      <div class="stack-xs">
+        <h2>States</h2>
+
+        <h3 class="pt-xs">Hover</h3>
+        <details>
+          <summary>?</summary>
+          What happens when someone moves their mouse over a button or link. Helps show it's clickable.
+        </details>
+        <div class="color-picker-group">
+          <h3>Hover: Background Color</h3>
+          <div class="color-inputs">
+            <input type="color" id="hover-bg-color" name="hover-bg-color" value="#ffffff">
+            <input type="text" id="hover-bg-hex" name="hover-bg-hex" value="#ffffff" maxlength="7">
+          </div>
+        </div>
+
+        <div class="stack-3xs">
+          <h3>Hover: Transform (drag me!)</h3>
+          <div class="drag-container">
+            <div class="drag-area">
+              <div class="drag-handle"></div>
+            </div>
+          </div>
+        </div>
+
+
+
+<!-- 
+        <h3 class="pt-xs">Active</h3>
+        <details>
+          <summary>?</summary>
+          What the button or link looks like when it's being clicked. Makes it feel responsive.
+        </details>
+
+        <h3 class="pt-xs">Focus</h3>
+        <details>
+          <summary>?</summary>
+          What it looks like when someone tabs to it with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out.
+        </details> -->
       </div>
     </div>
   </div>

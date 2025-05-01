@@ -1,0 +1,16 @@
+{
+  "needBasedProfile": {
+    "naam": "De Pixel-Perfectionist",
+    "beschrijving": "Visueel sterke designer met weinig technische kennis. Werkt samen met developers maar voelt zich soms machteloos over hoe het ontwerp uiteindelijk wordt geïmplementeerd.",
+    "motivatie": [
+      "Esthetiek en perfectie",
+      "De kloof dichten tussen Figma en de uiteindelijke website",
+      "Zelf meer grip krijgen op de uitwerking van designs"
+    ],
+    "behoeften": [
+      "Visuele controle over typografie in verschillende schermformaten, zonder te hoeven coderen",
+      "Tools om typografie snel en makkelijk te testen in de browser en op verschillende apparaten",
+      "Grip op hoe het ontwerp zich vertaalt naar een browser app"
+    ]
+  }
+}
