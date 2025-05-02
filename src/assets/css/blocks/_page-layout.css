@@ -76,6 +76,10 @@ html:has(.main-control-panel__button[aria-expanded="true"]) {
   .page-layout,
   .grid-column-lines {
     translate: -12rem 0;
+
+    @media (width < 42em) {
+      translate: 0;
+    }
   }
 }
 
