@@ -4,13 +4,11 @@ layout: "layouts/base.njk"
 permalink: /
 ---
 
-<div class="page-layout">
+<article class="page-layout">
   <h1 class="popout">Typography: The Art of Making Fonts Fight</h1>
-
   <p class="popout">Typography is an ancient and noble craft, dating back to the days when <a class="link-styling" href="#">monks meticulously hand-drew letters</a> while cursing their quills. Today, we have the privilege of choosing fonts with a mere click, yet somehow, we still manage to mess it up.</p>
 
   <h2>The War of the Fonts</h2>
-
   <p>There are two kinds of people in the world: those who use Helvetica and those who use Comic Sans. The former are design purists, the latter enjoy chaos. Somewhere in the middle, Times New Roman sits quietly, waiting for someone to remember it exists.</p>
 
   <p>The battles are fierce: Serif vs. Sans-Serif, Monospace vs. Proportional, Blackletter vs. "That Weird Handwriting Font That No One Can Read." Each believes they are superior. But in reality, the only true loser is Papyrus.</p>
@@ -32,7 +30,6 @@ permalink: /
   <p>Kerning, the spacing between letters, is also an art. Too tight, and your words become an unreadable mess. Too loose, and your sentence looks like it’s in the process of breaking up. Balance is key.</p>
 
   <h2>Typographic Hierarchy: Making Text Behave</h2>
-
   <p>Imagine a dinner party where no one knows who’s supposed to be speaking. That’s what happens when you ignore typographic hierarchy. Headings, subheadings, and body text all play their roles. Mixing them up is like putting a toddler in charge of the wine list.</p>
 
   <p>Size matters. Your heading should not be smaller than your paragraph text unless you enjoy confusing your readers. And bold is for emphasis, not for entire paragraphs. Don’t shout at your readers – they’ll leave.</p>
@@ -40,291 +37,33 @@ permalink: /
     <blockquote class="quote extend">“If everything is bold, then nothing is bold.”<br><span> – A Frustrated Designer</span></blockquote>
   </div>
 
-  <h2>The Final Word on Fonts</h2>
+  <div class="double-column stack-m extend">
+    <section>
+      <p class="pb-m">Some fonts are born elegant, like Baskerville — the font equivalent of wearing a tailored suit to breakfast. Others, like Courier, look like they’ve been typing screenplays in a coffee shop since 1997 and are proud of it. And let’s not forget Futura, the one trying a bit too hard to be taken seriously at design school.</p>
 
+      <p>Choosing a font is like casting an actor in a role. You wouldn’t ask Danny DeVito to play a romantic lead in a Nicholas Sparks adaptation — unless you’re going for something very specific. Fonts, too, must match the tone of the message. A legal contract written in Lobster would raise more than a few eyebrows.</p>
+    </section>
+
+    <section>
+      <p class="pb-m">There’s also the matter of font pairing. Like wine and cheese, some fonts complement each other beautifully — others just make a mess. A clean sans-serif headline paired with a readable serif body? Chef’s kiss. Two competing display fonts in the same sentence? That’s just asking for typographic whiplash.</p>
+
+      <p>In the end, typography is less about rules and more about rhythm, feeling, and common sense. If your design whispers rather than screams, guides rather than overwhelms, and looks good even before someone reads it — congratulations, you’ve made your fonts behave.</p>
+    </section>
+  </div>
+
+  <form class="form full-width text-white p-l-xl">
+    <label for="email">Join our mailing list or risk using Comic Sans forever.</label>
+    <input id="email" name="email" type="email"></input>
+
+    <button class="button-styling" type="submit">Submit</button>
+  </form>
+
+  <h2>The Final Word on Fonts</h2>
   <p>Typography is not just about letters; it’s about personality, readability, and making sure your audience doesn’t suffer an eye strain-induced meltdown. Choose wisely, space generously, and for the love of all things legible, never, ever use Papyrus.</p>
 
   <p>And if all else fails, just use Helvetica. No one ever got fired for using Helvetica.</p>
+</article>
 
-</div>
+{% include "partials/blocks/type-control-panel.njk" %}
 
-<div id="type-control-panel">
-  <button class="type-control-panel__button" aria-expanded="true" aria-controls="type-control-panel">
-    {% icon icon="arrowhead", alt="", width="var(--space-s)" %}
-    <span class="sr-only">open/close control panel</span>
-  </button>
-
-  <!-- Slider for minFontSize -->
-  <div class="slider-container slider-min">
-    <div class="slider-label">
-      <label for="minFontSize">Font Size (small):</label>
-      <span id="minFontSizeValue" class="slider-value">18</span>
-    </div>
-    <input type="range" id="minFontSize" name="minFontSize" min="16" max="19" step="1" value="16">
-  </div>
-
-  <!-- Slider for minTypeScale -->
-  <div class="slider-container slider-min">
-    <div class="slider-label">
-      <label for="minTypeScale">Type Scale (small):</label>
-      <span id="minTypeScaleValue" class="slider-value">1.2</span>
-    </div>
-    <input type="range" id="minTypeScale" name="minTypeScale" min="1.05" max="1.3" step="0.05" value="1.05">
-  </div>
-
-  <!-- Slider for maxFontSize -->
-  <div class="slider-container slider-max">
-    <div class="slider-label">
-      <label for="maxFontSize">Font Size (large):</label>
-      <span id="maxFontSizeValue" class="slider-value">21</span>
-    </div>
-    <input type="range" id="maxFontSize" name="maxFontSize" min="18" max="24" step="1" value="19">
-  </div>
-
-  <!-- Slider for maxTypeScale -->
-  <div class="slider-container slider-max">
-    <div class="slider-label">
-      <label for="contentWidth">Content Width:</label>
-      <span id="contentWidthValue" class="slider-value">400</span>
-    </div>
-    <input type="range" id="contentWidth" name="contentWidth" min="400" max="800" step="10" value="400">
-  </div>
-
-  <!-- Slider for maxTypeScale -->
-  <div class="slider-container slider-max">
-    <div class="slider-label">
-      <label for="maxTypeScale">Type Scale (large):</label>
-      <span id="maxTypeScaleValue" class="slider-value">1.25</span>
-    </div>
-    <input type="range" id="maxTypeScale" name="maxTypeScale" min="1.1" max="1.45" step="0.05" value="1.2">
-  </div>
-
-  <!-- Slider for lineHeight -->
-  <div class="slider-container slider">
-    <div class="slider-label">
-      <label for="lineHeight">Line height:</label>
-      <span id="lineHeightValue" class="slider-value">1.5</span>
-    </div>
-    <input type="range" id="lineHeight" name="lineHeight" min="1" max="2.2" step="0.05" value="1.5">
-  </div>
-</div>
-
-<div id="main-control-panel">
-  <button class="main-control-panel__button" aria-expanded="true" aria-controls="main-control-panel">
-    {% icon icon="arrowhead", alt="", width="var(--space-s)" %}
-    <span class="sr-only">open/close control panel</span>
-  </button>
-
-  <div class="main-control-panel__scroll-container">
-    <div class="main-control-panel__typography stack-xs">
-      <h2>Typography</h2>
-      <div class="select-input-container">
-        <label for="headline-font-selector">H</label>
-        <div class="custom-select">
-          <select name="headline-font-selector" id="headline-font-selector">
-            <option disabled selected>Select a font</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="select-input-container">
-        <label for="body-font-selector">P</label>
-        <div class="custom-select">
-          <select name="body-font-selector" id="body-font-selector">
-            <option disabled selected>Select a font</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label class="button button--primary" for="font-upload">
-          Upload Font File
-          {% icon icon="plus", alt="", width="var(--space-xs)" %}
-        </label>
-        <input class="hidden" type="file" id="font-upload" accept=".ttf,.otf,.woff,.woff2">
-      </div>
-    </div>
-
-    <div class="main-control-panel__grid stack-xs">
-      <h2>Layout</h2>
-      <div class="select-input-container pb-s">
-        <div class="custom-select">
-          <label for="layout-options" class="sr-only">Layout type</label>
-          <select name="layout-options" id="layout-options">
-            <option value="single">Single column</option>
-            <option value="double">Two columns</option>
-          </select>
-        </div>
-      </div>
-
-      <h3>Layout Grid</h3>
-      <div class="grid-type-selector select-input-container">
-        <label for="layout-grid" class="sr-only">Grid type</label>
-        <div class="custom-select">
-          <select name="layout-grid" id="layout-grid">
-            <option value="columns">Columns</option>
-            <option value="grid">Grid</option>
-          </select>
-        </div>
-        <button class="grid-type-selector__button">
-          <span class="sr-only">Show/hide grid</span>
-          {% icon icon="eye", alt="", width="var(--space-s)" %}
-        </button> 
-      </div>
-    </div>
-
-    <div class="main-control-panel__colors stack-xs">
-      <h2>Colors</h2>
-      <div class="stack-xs">
-        <div class="color-picker-group">
-          <h3>Primary</h3>
-          <div class="color-inputs">
-            <input type="color" id="primary-color" name="primary-color" value="#0055ff">
-            <input type="text" id="primary-hex" name="primary-hex" value="#0055ff" maxlength="7">
-          </div>
-        </div>
-        
-        <div class="color-picker-group">
-          <h3>Secondary</h3>
-          <div class="color-inputs">
-            <input type="color" id="secondary-color" name="secondary-color" value="#ff5500">
-            <input type="text" id="secondary-hex" name="secondary-hex" value="#ff5500" maxlength="7">
-          </div>
-        </div>
-
-        <div class="color-picker-group">
-          <h3>Body text</h3>
-          <div class="color-inputs">
-            <input type="color" id="body-color" name="body-color" value="#000000">
-            <input type="text" id="body-hex" name="body-hex" value="#000000" maxlength="7">
-          </div>
-        </div>
-
-        <div class="color-picker-group">
-          <h3>Background</h3>
-          <div class="color-inputs">
-            <input type="color" id="background-color" name="background-color" value="#faf4ed">
-            <input type="text" id="background-hex" name="background-hex" value="#faf4ed" maxlength="7">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="main-control-panel__content stack-xs">
-      <h2>Content</h2>
-      <div class="content-preview">
-        <p class="h1-styling">Heading 1</p>
-        <p class="h2-styling">Heading 2</p>
-        <p class="h3-styling">Heading 3</p>
-        <p class="p-styling">Paragraph</p>
-        <a class="link-styling" tabindex="-1">Link</a>
-        <p class="button-styling">Button</p>
-        <p class="blockquote-styling">Blockquote</p>
-      </div>
-    </div> -->
-
-    <div class="main-control-panel__css-output stack-xs">
-      <h2>Generated Type Scale</h2>
-      <pre class="css-output" id="cssOutput"></pre>
-      <button class="button--primary" id="copyCSSButton">Copy CSS Variables</button>
-    </div>
-
-    <div class="main-control-panel__interaction stack-s">
-      <h2>Interactive elements</h2>
-      <!-- <label for="show-link">
-        Link
-        <input id="show-link" type="checkbox" checked>
-      </label>
-      <label for="show-button">
-        Button
-        <input id="show-button" type="checkbox" checked>
-      </label>
-      <label for="show-form">
-        Form
-        <input id="show-form" type="checkbox">
-      </label> -->
-      <div class="stack-xs">
-        <h2>Button</h2>
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Border Radius</label>
-          </div>
-          <input type="range" id="btnRadius" min="0" max="2" step="0.1" value="1">
-        </div>
-
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Padding Top/Bottom</label>
-          </div>
-          <input type="range" id="btnPaddingBlock" min="0" max="2" step="0.1" value="0.5">
-        </div>
-        
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Padding Left/Right</label>
-          </div>
-          <input type="range" id="btnPaddingInline" min="0" max="4" step="0.1" value="1">
-        </div>
-      </div>
-
-      <div class="stack-xs">
-        <h2>States</h2>
-
-        <h3 class="pt-xs">Hover</h3>
-        <details>
-          <summary>?</summary>
-          What happens when someone moves their mouse over a button or link. Helps show it's clickable.
-        </details>
-        <div class="color-picker-group">
-          <h3>Hover: Background Color</h3>
-          <div class="color-inputs">
-            <input type="color" id="hover-bg-color" name="hover-bg-color" value="#ffffff">
-            <input type="text" id="hover-bg-hex" name="hover-bg-hex" value="#ffffff" maxlength="7">
-          </div>
-        </div>
-
-        <div class="stack-3xs">
-          <h3>Hover: Transform (drag me!)</h3>
-          <div class="drag-container">
-            <div class="drag-area">
-              <div class="drag-handle"></div>
-            </div>
-          </div>
-        </div>
-
-
-
-<!-- 
-        <h3 class="pt-xs">Active</h3>
-        <details>
-          <summary>?</summary>
-          What the button or link looks like when it's being clicked. Makes it feel responsive.
-        </details>
-
-        <h3 class="pt-xs">Focus</h3>
-        <details>
-          <summary>?</summary>
-          What it looks like when someone tabs to it with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out.
-        </details> -->
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="grid-debugger">
-  <div class="grid-grid-lines"></div>
-  <div class="grid-column-lines">
-    <div class="line line--full-start"></div>
-    <div class="line line--xtra-large-start"></div>
-    <div class="line line--extend-start"></div>
-    <div class="line line--popout-start"></div>
-    <div class="line line--content-start"></div>
-    <div class="line line--inset-start"></div>
-    <div class="line line--inset-end"></div>
-    <div class="line line--content-end"></div>
-    <div class="line line--popout-end"></div>
-    <div class="line line--extend-end"></div>
-    <div class="line line--xtra-large-end"></div>
-    <div class="line line--full-end"></div>
-  </div>
-</div>
+{% include "partials/blocks/main-control-panel.njk" %}

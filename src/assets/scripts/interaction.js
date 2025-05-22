@@ -1,22 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btnRadius = document.getElementById("btnRadius");
-  const btnPaddingBlock = document.getElementById("btnPaddingBlock");
-  const btnPaddingInline = document.getElementById("btnPaddingInline");
+  const btnDefaultRadius = document.getElementById("btnDefaultRadius");
+  const btnDefaultPaddingBlock = document.getElementById(
+    "btnDefaultPaddingBlock",
+  );
+  const btnDefaultPaddingInline = document.getElementById(
+    "btnDefaultPaddingInline",
+  );
 
   // Select the root or button element to apply CSS variables to
   const root = document.documentElement;
 
   // Apply the changes when the user interacts with the form
 
-  btnRadius.addEventListener("input", (event) => {
+  btnDefaultRadius.addEventListener("input", (event) => {
     root.style.setProperty("--btn-radius", `${event.target.value}rem`);
   });
 
-  btnPaddingBlock.addEventListener("input", (event) => {
+  btnDefaultPaddingBlock.addEventListener("input", (event) => {
     root.style.setProperty("--btn-padding-block", `${event.target.value}rem`);
   });
 
-  btnPaddingInline.addEventListener("input", (event) => {
+  btnDefaultPaddingInline.addEventListener("input", (event) => {
     root.style.setProperty("--btn-padding-inline", `${event.target.value}rem`);
   });
 });

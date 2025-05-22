@@ -13,20 +13,73 @@ button,
   justify-content: space-around;
   border: 0.5px solid var(--color-white);
   padding: var(--space-2xs);
+  gap: var(--space-2xs);
 
   svg {
     transition: var(--transition-base);
+    min-width: var(--space-xs);
   }
 
   &:hover,
-  &:focus-visible,
-  &:has(input[type="file"]:hover),
-  &:has(input[type="file"]:focus-visible) {
+  &:has(input[type="file"]:hover) {
     translate: 3px -3px;
     box-shadow: -3px 3px 0 var(--color-white);
 
     svg {
       rotate: 90deg;
+    }
+  }
+
+  &:focus-visible,
+  &:has(input[type="file"]:focus-visible) {
+    outline: 1px dashed var(--color-white);
+    outline-offset: 3px;
+  }
+
+  &#copyCSSButton {
+    > span::before,
+    > span::after {
+      opacity: 0;
+      pointer-events: none;
+      right: 0;
+      position: absolute;
+      transition: var(--transition-base);
+    }
+
+    > span::before {
+      content: "Values copied successfully! 🥳";
+      width: max-content;
+      background-color: var(--color-white);
+      color: var(--color-black);
+      padding: var(--space-2xs);
+      top: 0;
+      translate: 40% calc(-100% - 0.5rem);
+    }
+
+    > span::after {
+      content: "";
+      width: 2rem;
+      aspect-ratio: 1;
+      top: -0.5rem;
+      background-image: conic-gradient(
+        var(--color-white) 30deg,
+        transparent 30deg 330deg,
+        var(--color-white) 330deg
+      );
+    }
+
+    &.copied {
+      > span::before,
+      > span::after {
+        opacity: 1;
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      svg {
+        rotate: 0deg;
+      }
     }
   }
 }

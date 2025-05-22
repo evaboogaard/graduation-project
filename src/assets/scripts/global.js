@@ -9,7 +9,6 @@ import "./font-selector.js";
 import "./url-params.js";
 import "./type-control-panel.js";
 import "./main-control-panel.js";
-import "./grid-debugger.js";
 import "./color-picker.js";
 import "./interaction.js";
 
@@ -188,12 +187,17 @@ document.addEventListener("DOMContentLoaded", () => {
     cssOutput.textContent = cssText;
   }
 
-  // Copy to clipboard
   function copyTextToClipboard(text) {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("CSS variables copied to clipboard!");
+        const button = document.getElementById("copyCSSButton");
+        button.classList.add("copied");
+
+        // Remove the class after 2.5 seconds to hide the pseudo-elements
+        setTimeout(() => {
+          button.classList.remove("copied");
+        }, 2500);
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);

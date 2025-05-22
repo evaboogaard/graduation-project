@@ -40,6 +40,18 @@
     background-color: var(--color-darkgray);
   }
 
+  &:focus-visible {
+    outline: 1px dashed var(--color-white);
+    outline-offset: -2px;
+    background-color: var(--color-darkgray);
+
+    svg {
+      outline: 1px dotted var(--color-lightgray);
+      outline-offset: 12px;
+      border-radius: 5rem;
+    }
+  }
+
   svg {
     transition: var(--transition-base);
   }
@@ -128,4 +140,9 @@ input[type="range"] {
     translate: 0 -50%;
     transition: var(--transition-base);
   }
+}
+
+#maxFontSizeValue::after,
+#contentWidthValue::after {
+  content: "px";
 }

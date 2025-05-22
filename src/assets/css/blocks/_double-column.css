@@ -1,0 +1,6 @@
+.double-column {
+  display: flex;
+  gap: var(--space-l);
+  align-items: baseline;
+  text-align: justify;
+}

@@ -1,24 +1,26 @@
 .select-input-container {
   display: flex;
-  gap: var(--space-s);
-  align-items: center;
+  flex-direction: column;
+  gap: var(--space-2xs);
 
   .custom-select {
     position: relative;
     flex-grow: 1;
 
     &::before {
-      --size: 0.7rem;
       content: "";
       position: absolute;
-      width: var(--size);
-      height: var(--size);
-      top: 50%;
-      right: var(--space-2xs);
+      height: calc(100% - 5px);
+      top: calc(50% + 1px);
+      aspect-ratio: 1;
+      right: 2px;
       translate: 0 -50%;
       background-image: url('data:image/svg+xml,<svg width="14" height="28" viewBox="0 0 14 28" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="-1.5" x2="18.4391" y2="-1.5" transform="matrix(-0.650791 -0.759257 -0.650791 0.759257 12 28)" stroke="white" stroke-width="3"/><line y1="-1.5" x2="18.4391" y2="-1.5" transform="matrix(-0.650791 0.759257 -0.650791 -0.759257 12 0)" stroke="white" stroke-width="3"/></svg>');
-      background-size: 100% 100%;
+      background-size: 50% 50%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
       rotate: -90deg;
+      background-color: var(--color-mediumgray);
     }
 
     &:hover {
@@ -35,6 +37,9 @@
       transition: var(--transition-base);
       cursor: pointer;
       color: var(--color-lightgray);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:focus-visible {
         border-radius: 0;
@@ -44,6 +49,36 @@
 
       &:hover {
         border-color: var(--color-white);
+      }
+    }
+
+    @supports (appearance: base-select) {
+      select,
+      ::picker(select) {
+        appearance: base-select;
+      }
+
+      select {
+        border-radius: 0;
+      }
+
+      optgroup {
+        overflow-x: hidden;
+        background-color: var(--color-mediumgray);
+        color: var(--color-white);
+        padding-block: var(--space-2xs);
+
+        &:first-of-type {
+          padding-top: var(--space-xs);
+        }
+
+        &:last-of-type {
+          padding-bottom: var(--space-xs);
+        }
+      }
+
+      option {
+        max-width: 22ch;
       }
     }
   }

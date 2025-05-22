@@ -125,18 +125,6 @@ html:has(.main-control-panel__button[aria-expanded="true"]) {
     [full-end];
 }
 
-/** TWO COLUMN LAYOUT - @todo **/
-.page-layout.two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-inline: clamp(var(--space-s), 25vw, 25rem);
-  gap: var(--space-m-l); /* adjust the gap between columns */
-}
-
-.page-layout.two-column > * {
-  grid-column: span 1;
-}
-
 /** CLASSES **/
 .full {
   grid-column: full;
@@ -232,7 +220,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  accent-color: var(--color-secondary);
+  accent-color: var(--color-details);
 }
 
 :is(h1, .h1-styling, h2, .h2-styling, h3, .h3-styling, h4, .h4-styling):not(
@@ -241,7 +229,7 @@ body {
     #main-control-panel h3,
     .alert h3
   ) {
-  color: var(--color-primary);
+  color: var(--color-headline);
   font-family: var(--font-headline);
   font-weight: 400;
   font-style: normal;
@@ -307,7 +295,7 @@ p,
 }
 
 .full-width {
-  background-color: var(--color-primary);
+  background-color: var(--color-details);
 }
 
 .quote {
@@ -323,7 +311,7 @@ p,
 .alert {
   --stack-space: 2em;
   font-size: var(--step-0);
-  background: var(--color-primary);
+  background: var(--color-details);
   color: #fff;
   padding: 1.375em 1.25em;
   border-radius: 0.75em;
@@ -346,7 +334,7 @@ p,
     content: "";
     position: absolute;
     inset: 0;
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--color-headline);
     border-radius: 0.75em;
     pointer-events: none;
   }

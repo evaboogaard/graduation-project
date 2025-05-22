@@ -1,0 +1,200 @@
+
+<div id="main-control-panel">
+  <button class="main-control-panel__button" aria-expanded="true" aria-controls="main-control-panel">
+    {% icon icon="arrowhead", alt="", width="var(--space-s)" %}
+    <span class="sr-only">open/close control panel</span>
+  </button>
+
+  <div class="main-control-panel__scroll-container">
+    <div class="main-control-panel__typography stack-xs">
+      <h2>Typography</h2>
+      <div class="select-input-container">
+        <label for="headline-font-selector">Headlines</label>
+        <div class="cluster" style="--cluster-alignment: center; flex-wrap: nowrap;">
+          <div class="custom-select">
+            <select name="headline-font-selector" id="headline-font-selector">
+              <option disabled selected>Select a font</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="button button--primary" for="headline-font-upload">
+              {% icon icon="plus", alt="", width="var(--space-xs)" %}
+              <input class="hidden" type="file" id="headline-font-upload" accept=".ttf,.otf,.woff,.woff2">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="select-input-container">
+        <label for="body-font-selector">Body text</label>
+        <div class="cluster" style="--cluster-alignment: center; flex-wrap: nowrap;">
+          <div class="custom-select">
+            <select name="body-font-selector" id="body-font-selector">
+              <option disabled selected>Select a font</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="button button--primary" for="body-font-upload">
+              {% icon icon="plus", alt="", width="var(--space-xs)" %}
+              <input class="hidden" type="file" id="body-font-upload" accept=".ttf,.otf,.woff,.woff2">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-control-panel__colors stack-xs">
+      <h2>Colors</h2>
+      <div class="stack-xs">
+        <div class="color-picker-group">
+          <h3>Headlines</h3>
+          <div class="color-inputs">
+            <input type="color" id="headline-color" name="headline-color" value="#0055ff">
+            <input type="text" id="headline-hex" name="headline-hex" value="#0055ff" maxlength="7">
+          </div>
+        </div>
+
+        <div class="color-picker-group">
+          <h3>Body text</h3>
+          <div class="color-inputs">
+            <input type="color" id="body-color" name="body-color" value="#000000">
+            <input type="text" id="body-hex" name="body-hex" value="#000000" maxlength="7">
+          </div>
+        </div>
+
+        <div class="color-picker-group">
+          <h3>Background</h3>
+          <div class="color-inputs">
+            <input type="color" id="background-color" name="background-color" value="#faf4ed">
+            <input type="text" id="background-hex" name="background-hex" value="#faf4ed" maxlength="7">
+          </div>
+        </div>
+        
+        <div class="color-picker-group">
+          <h3>Details</h3>
+          <div class="color-inputs">
+            <input type="color" id="details-color" name="details-color" value="#ff5500">
+            <input type="text" id="details-hex" name="details-hex" value="#ff5500" maxlength="7">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-control-panel__css-output stack-xs">
+      <h2>Generated Type Scale</h2>
+      <details>
+        <summary>See Code</summary>
+        <div class="details-content">
+          <pre class="css-output" id="cssOutput"></pre>
+        </div>
+      </details>
+      <button class="button--primary" id="copyCSSButton">
+        Copy CSS Variables
+        <span>
+          {% icon icon="copy", alt="", width="var(--space-xs)" %}
+        </span>
+      </button>
+    </div>
+
+    <div class="main-control-panel__interaction stack-s">
+      <h2>Interactive elements</h2>
+      <!-- <label for="show-link">
+        Link
+        <input id="show-link" type="checkbox" checked>
+      </label>
+      <label for="show-button">
+        Button
+        <input id="show-button" type="checkbox" checked>
+      </label>
+      <label for="show-form">
+        Form
+        <input id="show-form" type="checkbox">
+      </label> -->
+      <div class="stack-xs">
+        <h2>Button</h2>
+        <div class="state-panel">
+          <label for="btn-default">
+            Default
+            <input class="hidden" type="radio" id="btn-default" name="btn-state" checked>
+          </label>
+          <label for="btn-hover">
+            Hover
+            <input class="hidden" type="radio" id="btn-hover" name="btn-state">
+          </label>
+          <label for="btn-focus">
+            Focus
+            <input class="hidden" type="radio" id="btn-focus" name="btn-state">
+          </label>
+          <label for="btn-active">
+            Active
+            <input class="hidden" type="radio" id="btn-active" name="btn-state">
+          </label>
+        </div>
+
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Border Radius</label>
+          </div>
+          <input type="range" id="btnDefaultRadius" min="0" max="2" step="0.1" value="1">
+        </div>
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Padding Top/Bottom</label>
+          </div>
+          <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
+        </div>
+        
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Padding Left/Right</label>
+          </div>
+          <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
+        </div>
+      </div>
+
+      <div class="stack-xs">
+        <details>
+          <summary>?</summary>
+          <div class="details-content">
+            What happens when someone moves their mouse over a button or link. Helps show it's clickable.
+          </div>
+        </details>
+        <div class="color-picker-group">
+          <h3>Background Color</h3>
+          <div class="color-inputs">
+            <input type="color" id="hover-bg-color" name="hover-bg-color" value="#1e5247">
+            <input type="text" id="hover-bg-hex" name="hover-bg-hex" value="#1e5247" maxlength="7">
+          </div>
+        </div>
+
+        <div class="stack-3xs">
+          <h3>Transform (drag me!)</h3>
+          <div class="drag-container">
+            <div class="drag-area">
+              <div class="drag-handle"></div>
+            </div>
+          </div>
+        </div>
+
+
+
+<!-- 
+        <h3 class="pt-xs">Active</h3>
+        <details>
+          <summary>?</summary>
+          What the button or link looks like when it's being clicked. Makes it feel responsive.
+        </details>
+
+        <h3 class="pt-xs">Focus</h3>
+        <details>
+          <summary>?</summary>
+          What it looks like when someone tabs to it with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out.
+        </details> -->
+      </div>
+    </div>
+  </div>
+</div>

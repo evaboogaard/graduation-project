@@ -1,0 +1,29 @@
+:root {
+  interpolate-size: allow-keywords;
+}
+
+details {
+  overflow: hidden;
+
+  /* summary {
+    display: block;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  } */
+}
+
+details::details-content {
+  color: hsl(0 0% 78%);
+  font-size: 1rem;
+  block-size: 0;
+  transition:
+    block-size 0.5s,
+    content-visibility 0.5s;
+  transition-behavior: allow-discrete;
+}
+
+details:open::details-content {
+  block-size: auto;
+}
