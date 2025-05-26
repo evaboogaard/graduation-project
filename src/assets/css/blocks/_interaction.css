@@ -16,10 +16,13 @@
   border: 2px solid var(--color-headline);
   width: fit-content;
   margin-inline: auto;
+  background-color: var(--color-btn-default-bg);
+  color: var(--color-btn-default-text);
 
   &:hover {
     transform: var(--btn-hover-transform, translateY(-0.2rem));
-    background-color: var(--color-btn-hover-bg, var(--color-secondary));
+    background-color: var(--color-btn-hover-bg, var(--color-black));
+    color: var(--color-btn-hover-text, var(--color-white));
     transition: var(--transition-base);
   }
 
@@ -31,8 +34,11 @@
     );
   }
 
-  &:focus-visible {
-    outline: var(--btn-focus-outline, 3px dotted white);
+  &:focus-visible,
+  &.focus-styling {
+    outline: var(--btn-focus-outline-thickness, 3px)
+      var(--btn-focus-outline-style, dashed)
+      var(--color-btn-focus-outline, #f09);
     outline-offset: var(--btn-focus-outline-offset, 2px);
   }
 }

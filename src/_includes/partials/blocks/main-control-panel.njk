@@ -53,6 +53,7 @@
           <div class="color-inputs">
             <input type="color" id="headline-color" name="headline-color" value="#0055ff">
             <input type="text" id="headline-hex" name="headline-hex" value="#0055ff" maxlength="7">
+            <span class="warning headline-warning"></span>
           </div>
         </div>
 
@@ -61,6 +62,7 @@
           <div class="color-inputs">
             <input type="color" id="body-color" name="body-color" value="#000000">
             <input type="text" id="body-hex" name="body-hex" value="#000000" maxlength="7">
+            <span class="warning body-warning"></span>
           </div>
         </div>
 
@@ -99,7 +101,7 @@
     </div>
 
     <div class="main-control-panel__interaction stack-s">
-      <h2>Interactive elements</h2>
+      <h2>Interactive elements (WIP)</h2>
       <!-- <label for="show-link">
         Link
         <input id="show-link" type="checkbox" checked>
@@ -133,41 +135,67 @@
           </label>
         </div>
 
+        <div class="btn-default-state stack-xs">
+          <div class="slider-container">
+            <div class="slider-label">
+              <label>Border Radius</label>
+              <span id="btnBorderRadiusValue" class="slider-value">1</span>
+            </div>
+            <input type="range" id="btnDefaultRadius" min="0" max="2" step="0.1" value="1">
+          </div>
 
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Border Radius</label>
+          <div class="slider-container">
+            <div class="slider-label">
+              <label>Padding Top/Bottom</label>
+              <span id="btnPaddingBlockValue" class="slider-value">1</span>
+            </div>
+            <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
           </div>
-          <input type="range" id="btnDefaultRadius" min="0" max="2" step="0.1" value="1">
-        </div>
+          
+          <div class="slider-container">
+            <div class="slider-label">
+              <label>Padding Left/Right</label>
+              <span id="btnPaddingInlineValue" class="slider-value">1</span>
+            </div>
+            <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
+          </div>
 
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Padding Top/Bottom</label>
+          <div class="color-picker-group">
+            <h3>Background Color</h3>
+            <div class="color-inputs">
+              <input type="color" id="btn-default-bg-color" name="btn-default-bg-color" value="#ffee2e">
+              <input type="text" id="btn-default-bg-hex" name="btn-default-bg-hex" value="#ffee2e" maxlength="7">
+              <span class="warning btn-default-warning"></span>
+            </div>
           </div>
-          <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
-        </div>
-        
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Padding Left/Right</label>
+
+          <div class="color-picker-group">
+            <h3>Text Color</h3>
+            <div class="color-inputs">
+              <input type="color" id="btn-default-text-color" name="btn-default-text-color" value="#000">
+              <input type="text" id="btn-default-text-hex" name="btn-default-text-hex" value="#000" maxlength="7">
+              <span class="warning btn-default-warning"></span>
+            </div>
           </div>
-          <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
         </div>
       </div>
 
-      <div class="stack-xs">
-        <details>
-          <summary>?</summary>
-          <div class="details-content">
-            What happens when someone moves their mouse over a button or link. Helps show it's clickable.
-          </div>
-        </details>
+
+      <div class="btn-hover-state stack-xs">
+        <p class="info"><span>The <i>hover state</i> is what happens when someone moves their mouse over a button or link. Helps show the user it's clickable.</span></p>
         <div class="color-picker-group">
           <h3>Background Color</h3>
           <div class="color-inputs">
-            <input type="color" id="hover-bg-color" name="hover-bg-color" value="#1e5247">
-            <input type="text" id="hover-bg-hex" name="hover-bg-hex" value="#1e5247" maxlength="7">
+            <input type="color" id="btn-hover-bg-color" name="btn-hover-bg-color" value="#1e5247">
+            <input type="text" id="btn-hover-bg-hex" name="btn-hover-bg-hex" value="#1e5247" maxlength="7">
+          </div>
+        </div>
+
+        <div class="color-picker-group">
+          <h3>Text Color</h3>
+          <div class="color-inputs">
+            <input type="color" id="btn-hover-text-color" name="btn-hover-text-color" value="#ffffff">
+            <input type="text" id="btn-hover-text-hex" name="btn-hover-text-hex" value="#ffffff" maxlength="7">
           </div>
         </div>
 
@@ -179,7 +207,50 @@
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="btn-focus-state stack-xs">
+        <p class="info"><span>The <i>focus state</i> is what it looks like when someone tabs to your element with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out, preferably with an <i>outline</i>.</span></p>
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Border Thickness</label>
+            <span id="btnFocusBorderThicknessValue" class="slider-value">1</span>
+          </div>
+          <input type="range" id="btnFocusBorderThickness" min="1" max="6" step="1" value="2">
+        </div>
+
+        <div class="slider-container">
+          <div class="slider-label">
+            <label>Border Offset</label>
+            <span id="btnFocusBorderOffsetValue" class="slider-value">1</span>
+          </div>
+          <input type="range" id="btnFocusBorderOffset" min="0" max="6" step="1" value="1">
+        </div>
+
+        <div class="select-input-container">
+          <label for="btn-border-style">Border Style</label>
+          <div class="custom-select">
+            <select name="btn-border-style" id="btn-border-style">
+              <option value="dotted">Dotted</option>
+              <option value="dashed">Dashed</option>
+              <option value="solid">Solid</option>
+              <option value="double">Double</option>
+              <option value="groove">Groove</option>
+              <option value="ridge">Ridge</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="color-picker-group pb-m">
+          <h3>Border Color</h3>
+          <div class="color-inputs">
+            <input type="color" id="btn-focus-outline-color" name="btn-focus-outline-color" value="#ff0099">
+            <input type="text" id="btn-focus-outline-hex" name="btn-focus-outline-hex" value="#ff0099" maxlength="7">
+          </div>
+        </div>
+
+        <button class="button-styling focus-styling">Preview</button>
+      </div>
 
 
 <!-- 
@@ -194,7 +265,7 @@
           <summary>?</summary>
           What it looks like when someone tabs to it with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out.
         </details> -->
-      </div>
+      
     </div>
   </div>
 </div>

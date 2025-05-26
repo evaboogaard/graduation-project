@@ -4,12 +4,49 @@
   border: 1px solid var(--color-lightgray);
 
   label {
-    padding: var(--space-3xs) var(--space-xs);
-    outline: 1px solid var(--color-lightgray);
+    padding: var(--space-3xs) var(--space-2xs);
+    cursor: pointer;
+
+    &:has(input:focus-visible) {
+      outline: 1px dashed var(--color-white);
+      outline-offset: 2px;
+    }
 
     &:has(input:checked) {
       background-color: var(--color-lightgray);
       color: var(--color-black);
     }
+
+    &:first-of-type {
+      padding-left: var(--space-xs);
+    }
+
+    &:last-of-stype {
+      padding-right: var(--space-xs);
+    }
+  }
+}
+
+.btn-default-state,
+.btn-hover-state,
+.btn-focus-state {
+  display: none;
+}
+
+body:has(#btn-default:checked) {
+  .btn-default-state {
+    display: block;
+  }
+}
+
+body:has(#btn-hover:checked) {
+  .btn-hover-state {
+    display: block;
+  }
+}
+
+body:has(#btn-focus:checked) {
+  .btn-focus-state {
+    display: block;
   }
 }

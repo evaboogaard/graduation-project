@@ -5,8 +5,8 @@
  * `import { myFunction } from './myFunction';`
  */
 
-import "./font-selector.js";
 import "./url-params.js";
+import "./font-selector.js";
 import "./type-control-panel.js";
 import "./main-control-panel.js";
 import "./color-picker.js";
