@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function restoreValue(input, cssVarName, outputSpan) {
     const savedValue = localStorage.getItem(cssVarName);
-    if (savedValue !== null) {
-      input.value = savedValue;
-      updateValue(input, cssVarName, outputSpan);
-    }
+    const valueToUse = savedValue !== null ? savedValue : input.value;
+    input.value = valueToUse;
+    updateValue(input, cssVarName, outputSpan);
   }
 
+  // Restore btn default inputs with px update
   restoreValue(btnDefaultRadius, "--btn-radius", btnBorderRadiusValue);
   restoreValue(
     btnDefaultPaddingBlock,
@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("--btn-focus-outline-color", borderColorInput.value);
   });
 
+  // Restore border thickness/offset/style/color inputs values and update UI
   const savedThickness = localStorage.getItem("--btn-focus-outline-thickness");
   if (savedThickness !== null) borderThicknessInput.value = savedThickness;
 
