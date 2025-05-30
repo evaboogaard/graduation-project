@@ -3,4 +3,9 @@
   gap: var(--space-l);
   align-items: baseline;
   text-align: justify;
+
+  @container layout (max-width: 40rem) {
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
 }

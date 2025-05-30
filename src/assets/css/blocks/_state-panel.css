@@ -1,11 +1,17 @@
 .state-panel {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   border: 1px solid var(--color-lightgray);
 
   label {
     padding: var(--space-3xs) var(--space-2xs);
+    text-align: center;
     cursor: pointer;
+    transition: var(--transition-base);
+
+    &:hover {
+      background-color: var(--color-mediumgray-hover);
+    }
 
     &:has(input:focus-visible) {
       outline: 1px dashed var(--color-white);
@@ -16,14 +22,14 @@
       background-color: var(--color-lightgray);
       color: var(--color-black);
     }
-
+    /* 
     &:first-of-type {
       padding-left: var(--space-xs);
     }
 
     &:last-of-stype {
       padding-right: var(--space-xs);
-    }
+    } */
   }
 }
 

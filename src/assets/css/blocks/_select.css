@@ -11,7 +11,7 @@
       content: "";
       position: absolute;
       height: calc(100% - 5px);
-      top: calc(50% + 1px);
+      top: calc(50% + 0.5px);
       aspect-ratio: 1;
       right: 2px;
       translate: 0 -50%;
@@ -20,10 +20,16 @@
       background-position: 50% 50%;
       background-repeat: no-repeat;
       rotate: -90deg;
+      pointer-events: none;
+      transition: var(--transition-base);
       background-color: var(--color-mediumgray);
     }
 
     &:hover {
+      &::before {
+        background-color: var(--color-mediumgray-hover);
+      }
+
       select {
         border-color: var(--color-white);
       }

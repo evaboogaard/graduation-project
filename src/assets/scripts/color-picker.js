@@ -47,6 +47,15 @@ function checkAllContrasts() {
   );
   const btnRatio = getContrastRatio(btnText, btnBg);
   showContrastWarning("btn-default", btnRatio);
+
+  const btnHoverBg = hexToRgb(
+    document.getElementById("btn-hover-bg-color").value,
+  );
+  const btnHoverText = hexToRgb(
+    document.getElementById("btn-hover-text-color").value,
+  );
+  const btnHoverRatio = getContrastRatio(btnHoverText, btnHoverBg);
+  showContrastWarning("btn-hover", btnHoverRatio);
 }
 
 const colors = [
@@ -98,6 +107,11 @@ function setupColorSync(colorInputId, hexInputId) {
   const cssVar = colorInput.dataset.cssVar;
   const key = `${colorInputId}-value`;
 
+  // Scroll target bepalen: bijvoorbeeld een element met class of id gelijk aan kleur-id zonder '-color'
+  const targetId = colorInputId.replace("-color", "");
+  const targetEl =
+    document.querySelector(`.${targetId}`) || document.getElementById(targetId);
+
   const sync = (hex) => {
     hexInput.value = hex;
     colorInput.value = hex;
@@ -110,10 +124,17 @@ function setupColorSync(colorInputId, hexInputId) {
   colorInput.addEventListener("input", () => sync(colorInput.value));
   hexInput.addEventListener("input", () => {
     const hex = hexInput.value;
-    if (/^#?[0-9a-fA-F]{6}$/.test(hex)) {
+    if (/^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(hex)) {
       sync(hex.startsWith("#") ? hex : `#${hex}`);
     }
   });
+
+  // Nieuw: scroll naar het target element bij focus (klikken)
+  if (targetEl) {
+    colorInput.addEventListener("focus", () => {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
 
   const saved = localStorage.getItem(key);
   if (saved) {

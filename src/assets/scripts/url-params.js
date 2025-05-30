@@ -6,19 +6,24 @@ function updateURL() {
   const colorValues = colorPairs.map(({ color }) =>
     color.value.replace("#", ""),
   );
+
+  // Get selected fonts
+  const headlineFont = document.getElementById("headline-font-selector").value;
+  const bodyFont = document.getElementById("body-font-selector").value;
+
+  // Encode fonts to handle spaces and special characters
+  const fontValues = [
+    encodeURIComponent(headlineFont),
+    encodeURIComponent(bodyFont),
+  ];
+
   const newURL =
     window.location.pathname +
     "?" +
-    [...sliderValues, ...colorValues].join(",");
+    [...sliderValues, ...colorValues, ...fontValues].join(",");
+
   window.history.replaceState({}, "", newURL);
 }
-
-sliders.forEach((slider) => {
-  slider.addEventListener("input", () => {
-    document.getElementById(slider.id + "Value").textContent = slider.value;
-    updateURL();
-  });
-});
 
 const colorPairs = [
   {
@@ -61,6 +66,8 @@ colorPairs.forEach(({ color, hex }) => {
 const match = window.location.search.match(/\?([^#]+)/);
 if (match) {
   const values = match[1].split(",");
+
+  // Slider values
   values.forEach((val, i) => {
     if (sliders[i]) {
       sliders[i].value = val;
@@ -68,15 +75,41 @@ if (match) {
     }
   });
 
-  values.slice(sliders.length).forEach((hex, i) => {
-    const val = `#${hex}`;
-    if (colorPairs[i]) {
-      colorPairs[i].color.value = val;
-      colorPairs[i].hex.value = val;
-      document.documentElement.style.setProperty(
-        `--color-${colorPairs[i].color.id.replace("-color", "")}`,
-        val,
-      );
-    }
-  });
+  // Color values
+  values
+    .slice(sliders.length, sliders.length + colorPairs.length)
+    .forEach((hex, i) => {
+      const val = `#${hex}`;
+      if (colorPairs[i]) {
+        colorPairs[i].color.value = val;
+        colorPairs[i].hex.value = val;
+        document.documentElement.style.setProperty(
+          `--color-${colorPairs[i].color.id.replace("-color", "")}`,
+          val,
+        );
+      }
+    });
+
+  // Font values
+  const headlineFont = decodeURIComponent(
+    values[sliders.length + colorPairs.length] || "",
+  );
+  const bodyFont = decodeURIComponent(
+    values[sliders.length + colorPairs.length + 1] || "",
+  );
+
+  if (headlineFont) {
+    document.getElementById("headline-font-selector").value = headlineFont;
+    document.documentElement.style.setProperty(
+      "--font-headline",
+      `'${headlineFont}'`,
+    );
+  }
+
+  if (bodyFont) {
+    document.getElementById("body-font-selector").value = bodyFont;
+    document.documentElement.style.setProperty("--font-body", `'${bodyFont}'`);
+  }
 }
+
+export { updateURL as updateUrl };

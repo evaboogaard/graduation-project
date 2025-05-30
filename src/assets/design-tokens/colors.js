@@ -12,5 +12,6 @@ export const colors = {
   "btn-focus-outline": "#ff0099",
   lightgray: "#bcbcbc",
   mediumgray: "#222222",
+  "mediumgray-hover": "#3f3f3f",
   darkgray: "#1a1a1a",
 };

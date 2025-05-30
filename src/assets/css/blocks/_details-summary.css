@@ -5,13 +5,9 @@
 details {
   overflow: hidden;
 
-  /* summary {
-    display: block;
+  summary {
+    cursor: pointer;
   }
-
-  summary::-webkit-details-marker {
-    display: none;
-  } */
 }
 
 details::details-content {

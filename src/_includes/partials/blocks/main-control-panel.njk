@@ -7,7 +7,9 @@
 
   <div class="main-control-panel__scroll-container">
     <div class="main-control-panel__typography stack-xs">
-      <h2>Typography</h2>
+      <input type="file" id="headline-font-upload" accept=".woff,.woff2,.ttf,.otf" style="display:none" />
+      <input type="file" id="body-font-upload" accept=".woff,.woff2,.ttf,.otf" style="display:none" />
+      <h2>Base Typography</h2>
       <div class="select-input-container">
         <label for="headline-font-selector">Headlines</label>
         <div class="cluster" style="--cluster-alignment: center; flex-wrap: nowrap;">
@@ -42,6 +44,60 @@
             </label>
           </div>
         </div>
+      </div>
+
+        <!-- Slider for minFontSize -->
+      <div class="slider-container slider-min">
+        <div class="slider-label">
+          <label for="minFontSize">Font Size (small):</label>
+          <span id="minFontSizeValue" class="slider-value">18</span>
+        </div>
+        <input type="range" id="minFontSize" name="minFontSize" min="16" max="19" step="1" value="16">
+      </div>
+
+      <!-- Slider for minTypeScale -->
+      <div class="slider-container slider-min">
+        <div class="slider-label">
+          <label for="minTypeScale">Type Scale (small):</label>
+          <span id="minTypeScaleValue" class="slider-value">1.2</span>
+        </div>
+        <input type="range" id="minTypeScale" name="minTypeScale" min="1.05" max="1.3" step="0.05" value="1.05">
+      </div>
+
+      <!-- Slider for maxFontSize -->
+      <div class="slider-container slider-max">
+        <div class="slider-label">
+          <label for="maxFontSize">Font Size:</label>
+          <span id="maxFontSizeValue" class="slider-value">21</span>
+        </div>
+        <input type="range" id="maxFontSize" name="maxFontSize" min="18" max="24" step="1" value="19">
+      </div>
+
+      <!-- Slider for maxTypeScale -->
+      <div class="slider-container slider-max">
+        <div class="slider-label">
+          <label for="contentWidth">Content Width:</label>
+          <span id="contentWidthValue" class="slider-value">400</span>
+        </div>
+        <input type="range" id="contentWidth" name="contentWidth" min="400" max="800" step="10" value="400">
+      </div>
+
+      <!-- Slider for maxTypeScale -->
+      <div class="slider-container slider-max">
+        <div class="slider-label">
+          <label for="maxTypeScale">Type Scale</label>
+          <span id="maxTypeScaleValue" class="slider-value">1.25</span>
+        </div>
+        <input type="range" id="maxTypeScale" name="maxTypeScale" min="1.1" max="1.45" step="0.05" value="1.2">
+      </div>
+
+      <!-- Slider for lineHeight -->
+      <div class="slider-container slider">
+        <div class="slider-label">
+          <label for="lineHeight">Line height:</label>
+          <span id="lineHeightValue" class="slider-value">1.5</span>
+        </div>
+        <input type="range" id="lineHeight" name="lineHeight" min="1" max="2.2" step="0.05" value="1.5">
       </div>
     </div>
 
@@ -89,7 +145,7 @@
       <details>
         <summary>See Code</summary>
         <div class="details-content">
-          <pre class="css-output" id="cssOutput"></pre>
+          <pre><code class="css-output language-css" id="cssOutput"></code></pre>
         </div>
       </details>
       <button class="button--primary" id="copyCSSButton">
@@ -114,7 +170,7 @@
         Form
         <input id="show-form" type="checkbox">
       </label> -->
-      <div class="stack-xs">
+      <div id="btn-controls" class="stack-xs">
         <h2>Button</h2>
         <div class="state-panel">
           <label for="btn-default">
@@ -146,7 +202,7 @@
 
           <div class="slider-container">
             <div class="slider-label">
-              <label>Padding Top/Bottom</label>
+              <label>Padding Block</label>
               <span id="btnPaddingBlockValue" class="slider-value">1</span>
             </div>
             <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
@@ -154,7 +210,7 @@
           
           <div class="slider-container">
             <div class="slider-label">
-              <label>Padding Left/Right</label>
+              <label>Padding Inline</label>
               <span id="btnPaddingInlineValue" class="slider-value">1</span>
             </div>
             <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
@@ -180,7 +236,6 @@
         </div>
       </div>
 
-
       <div class="btn-hover-state stack-xs">
         <p class="info"><span>The <i>hover state</i> is what happens when someone moves their mouse over a button or link. Helps show the user it's clickable.</span></p>
         <div class="color-picker-group">
@@ -188,6 +243,7 @@
           <div class="color-inputs">
             <input type="color" id="btn-hover-bg-color" name="btn-hover-bg-color" value="#1e5247">
             <input type="text" id="btn-hover-bg-hex" name="btn-hover-bg-hex" value="#1e5247" maxlength="7">
+            <span class="warning btn-hover-warning"></span>
           </div>
         </div>
 
@@ -196,6 +252,7 @@
           <div class="color-inputs">
             <input type="color" id="btn-hover-text-color" name="btn-hover-text-color" value="#ffffff">
             <input type="text" id="btn-hover-text-hex" name="btn-hover-text-hex" value="#ffffff" maxlength="7">
+            <span class="warning btn-hover-warning"></span>
           </div>
         </div>
 
@@ -216,7 +273,7 @@
             <label>Border Thickness</label>
             <span id="btnFocusBorderThicknessValue" class="slider-value">1</span>
           </div>
-          <input type="range" id="btnFocusBorderThickness" min="1" max="6" step="1" value="2">
+          <input type="range" id="btnFocusBorderThickness" min="1" max="6" step="1" value="4">
         </div>
 
         <div class="slider-container">
@@ -249,23 +306,8 @@
           </div>
         </div>
 
-        <button class="button-styling focus-styling">Preview</button>
-      </div>
-
-
-<!-- 
-        <h3 class="pt-xs">Active</h3>
-        <details>
-          <summary>?</summary>
-          What the button or link looks like when it's being clicked. Makes it feel responsive.
-        </details>
-
-        <h3 class="pt-xs">Focus</h3>
-        <details>
-          <summary>?</summary>
-          What it looks like when someone tabs to it with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out.
-        </details> -->
-      
+        <button class="btn-styling focus-styling">Preview</button>
+      </div>      
     </div>
   </div>
 </div>

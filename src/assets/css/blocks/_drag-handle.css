@@ -1,0 +1,8 @@
+.drag-handle {
+  background: #ccc;
+  cursor: col-resize;
+  border: none;
+  width: 5px;
+  height: 100%;
+  padding: 0;
+}

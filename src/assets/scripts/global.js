@@ -5,12 +5,12 @@
  * `import { myFunction } from './myFunction';`
  */
 
+import Prism from "prismjs";
 import "./url-params.js";
 import "./font-selector.js";
-import "./type-control-panel.js";
-import "./main-control-panel.js";
 import "./color-picker.js";
 import "./interaction.js";
+import "./drag-handle.js";
 
 import { calculateTypeScale } from "https://esm.sh/utopia-core";
 
@@ -155,17 +155,26 @@ document.addEventListener("DOMContentLoaded", () => {
     fontSteps.forEach((stepObj) => {
       const varName = `--step-${stepObj.step}`;
       const varValue = stepObj.clamp;
-      cssText += `${varName}: ${varValue};\n`;
+      cssText += `  ${varName}: ${varValue};\n`; // inspringen met 2 spaties
     });
 
-    cssText += `--min-type-scale: ${currentOptions.minTypeScale};\n`;
-    cssText += `--max-type-scale: ${currentOptions.maxTypeScale};\n`;
-    cssText += `--content-max-width: ${
+    cssText += `  --min-type-scale: ${currentOptions.minTypeScale};\n`;
+    cssText += `  --max-type-scale: ${currentOptions.maxTypeScale};\n`;
+    cssText += `  --content-max-width: ${
       currentOptions.contentWidth || 37.5
     }rem;\n`;
-    cssText += `--line-height: ${currentOptions.lineHeight || 1.5};\n`;
+    cssText += `  --line-height: ${currentOptions.lineHeight || 1.5};\n`;
 
-    return `:root {\n${cssText}}`;
+    const finalCSS = `:root {\n${cssText}}`;
+
+    // Injecteer de gegenereerde CSS in je code-element
+    const el = document.getElementById("cssOutput");
+    if (el) {
+      el.textContent = finalCSS; // of innerText
+      Prism.highlightElement(el); // highlight nadat content erin staat
+    }
+
+    return finalCSS;
   }
 
   // Function to copy text to clipboard
