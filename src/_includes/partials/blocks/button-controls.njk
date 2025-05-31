@@ -1,0 +1,151 @@
+<div class="main-control-panel__btn-controls stack-s">
+    <a class="back-button" href="#">{% icon icon="close", alt="", width="var(--space-s)" %}<span class="sr-only">Close button controls</span></a>
+    <div id="btn-controls" class="stack-xs">
+    <h2>Button</h2>
+
+    <div class="slider-container">
+        <div class="slider-label">
+        <label>Border Radius</label>
+        <span id="btnBorderRadiusValue" class="slider-value">1</span>
+        </div>
+        <input type="range" id="btnDefaultRadius" min="0" max="2" step="0.1" value="1">
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-label">
+        <label>Padding Block</label>
+        <span id="btnPaddingBlockValue" class="slider-value">1</span>
+        </div>
+        <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
+    </div>
+    
+    <div class="slider-container">
+        <div class="slider-label">
+        <label>Padding Inline</label>
+        <span id="btnPaddingInlineValue" class="slider-value">1</span>
+        </div>
+        <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
+    </div>
+
+    <div class="state-panel">
+        <label for="btn-default">
+        Default
+        <input class="hidden" type="radio" id="btn-default" name="btn-state" checked>
+        </label>
+        <label for="btn-hover">
+        Hover
+        <input class="hidden" type="radio" id="btn-hover" name="btn-state">
+        </label>
+        <label for="btn-focus">
+        Focus
+        <input class="hidden" type="radio" id="btn-focus" name="btn-state">
+        </label>
+        <label for="btn-active">
+        Active
+        <input class="hidden" type="radio" id="btn-active" name="btn-state">
+        </label>
+    </div>
+
+    <div class="btn-default-state stack-xs">
+        <button tabindex="-1" class="btn-styling">Preview</button>
+
+        <div class="color-picker-group">
+        <h3>Background Color</h3>
+        <div class="color-inputs">
+            <input type="color" id="btn-default-bg-color" name="btn-default-bg-color" value="#003f31">
+            <input type="text" id="btn-default-bg-hex" name="btn-default-bg-hex" value="#003f31" maxlength="7">
+            <span class="warning btn-default-warning"></span>
+        </div>
+        </div>
+
+        <div class="color-picker-group">
+        <h3>Text Color</h3>
+        <div class="color-inputs">
+            <input type="color" id="btn-default-text-color" name="btn-default-text-color" value="#000">
+            <input type="text" id="btn-default-text-hex" name="btn-default-text-hex" value="#000" maxlength="7">
+            <span class="warning btn-default-warning"></span>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="btn-hover-state stack-xs">
+    <button tabindex="-1" class="btn-styling hover-styling">Preview</button>
+
+    <details class="info">
+        <summary>{% icon icon="info", alt="", width="var(--space-s)" %} <span>More information</span></summary>
+        <span>The <i>hover state</i> is what happens when someone moves their mouse over a button or link. Helps show the user it's clickable.</span>        </details>
+    <div class="color-picker-group">
+        <h3>Background Color</h3>
+        <div class="color-inputs">
+        <input type="color" id="btn-hover-bg-color" name="btn-hover-bg-color" value="#ffffff">
+        <input type="text" id="btn-hover-bg-hex" name="btn-hover-bg-hex" value="#ffffff" maxlength="7">
+        <span class="warning btn-hover-warning"></span>
+        </div>
+    </div>
+
+    <div class="color-picker-group">
+        <h3>Text Color</h3>
+        <div class="color-inputs">
+        <input type="color" id="btn-hover-text-color" name="btn-hover-text-color" value="#000000">
+        <input type="text" id="btn-hover-text-hex" name="btn-hover-text-hex" value="#000000" maxlength="7">
+        <span class="warning btn-hover-warning"></span>
+        </div>
+    </div>
+
+    <div class="stack-3xs">
+        <h3>Transform (drag me!)</h3>
+        <div class="drag-container">
+        <div class="drag-area">
+            <div class="drag-handle"></div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="btn-focus-state stack-xs">
+    <button tabindex="-1" class="btn-styling focus-styling">Preview</button>
+
+    <details class="info">
+        <summary>{% icon icon="info", alt="", width="var(--space-s)" %} <span>More information</span></summary>
+        <span>The <i>focus state</i> is what it looks like when someone tabs to your element with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out, preferably with an <i>outline</i>.</span>
+    </details>
+    <div class="slider-container">
+        <div class="slider-label">
+        <label>Border Thickness</label>
+        <span id="btnFocusBorderThicknessValue" class="slider-value">1</span>
+        </div>
+        <input type="range" id="btnFocusBorderThickness" min="1" max="6" step="1" value="4">
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-label">
+        <label>Border Offset</label>
+        <span id="btnFocusBorderOffsetValue" class="slider-value">1</span>
+        </div>
+        <input type="range" id="btnFocusBorderOffset" min="0" max="6" step="1" value="1">
+    </div>
+
+    <div class="select-input-container">
+        <label for="btn-border-style">Border Style</label>
+        <div class="custom-select">
+        <select name="btn-border-style" id="btn-border-style">
+            <option value="dotted">Dotted</option>
+            <option value="dashed">Dashed</option>
+            <option value="solid">Solid</option>
+            <option value="double">Double</option>
+            <option value="groove">Groove</option>
+            <option value="ridge">Ridge</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="color-picker-group pb-m">
+        <h3>Border Color</h3>
+        <div class="color-inputs">
+            <input type="color" id="btn-focus-outline-color" name="btn-focus-outline-color" value="#ff0099">
+            <input type="text" id="btn-focus-outline-hex" name="btn-focus-outline-hex" value="#ff0099" maxlength="7">
+        </div>
+    </div>
+    </div>      
+</div>

@@ -12,6 +12,8 @@ import "./color-picker.js";
 import "./interaction.js";
 import "./drag-handle.js";
 
+import { getColorCSSVariables } from "./color-picker.js";
+
 import { calculateTypeScale } from "https://esm.sh/utopia-core";
 
 // Initial configuration
@@ -101,6 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageLayoutElements = document.querySelectorAll(".page-layout");
     const fullWidthElements = document.querySelectorAll(".full-width");
 
+    currentOptions.contentWidth = sliderValue / 16;
+
     // Apply the CSS variable to the root for global effect
     document.documentElement.style.setProperty("--content-max-width", remValue);
 
@@ -111,6 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     fullWidthElements.forEach((element) => {
       element.style.setProperty("--content-max-width", remValue);
     });
+
+    updateCSSOutput();
   }
 
   // Function to handle slider changes
@@ -155,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fontSteps.forEach((stepObj) => {
       const varName = `--step-${stepObj.step}`;
       const varValue = stepObj.clamp;
-      cssText += `  ${varName}: ${varValue};\n`; // inspringen met 2 spaties
+      cssText += `  ${varName}: ${varValue};\n`;
     });
 
     cssText += `  --min-type-scale: ${currentOptions.minTypeScale};\n`;
@@ -165,16 +171,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }rem;\n`;
     cssText += `  --line-height: ${currentOptions.lineHeight || 1.5};\n`;
 
-    const finalCSS = `:root {\n${cssText}}`;
+    cssText += getColorCSSVariables() + "\n";
 
-    // Injecteer de gegenereerde CSS in je code-element
-    const el = document.getElementById("cssOutput");
-    if (el) {
-      el.textContent = finalCSS; // of innerText
-      Prism.highlightElement(el); // highlight nadat content erin staat
-    }
+    return `:root {\n${cssText}}`;
+  }
 
-    return finalCSS;
+  function updateCSSOutput() {
+    const fontSteps = calculateTypeScale(currentOptions);
+    const cssText = generateCSSOutput(fontSteps);
+    const cssOutput = document.getElementById("cssOutput");
+    cssOutput.textContent = cssText;
+
+    // Hier opnieuw highlighten!
+    Prism.highlightElement(cssOutput);
   }
 
   // Function to copy text to clipboard
@@ -187,13 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((err) => {
         console.error("Failed to copy text: ", err);
       });
-  }
-
-  function updateCSSOutput() {
-    const fontSteps = calculateTypeScale(currentOptions);
-    const cssText = generateCSSOutput(fontSteps);
-    const cssOutput = document.getElementById("cssOutput");
-    cssOutput.textContent = cssText;
   }
 
   function copyTextToClipboard(text) {

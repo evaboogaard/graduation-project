@@ -2,12 +2,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   border: 1px solid var(--color-lightgray);
+  margin-block: var(--space-m) var(--space-s);
 
   label {
     padding: var(--space-3xs) var(--space-2xs);
     text-align: center;
     cursor: pointer;
     transition: var(--transition-base);
+    position: relative;
 
     &:hover {
       background-color: var(--color-mediumgray-hover);

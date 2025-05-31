@@ -1,6 +1,25 @@
-.main-control-panel__interaction {
-  display: flex;
+.main-control-panel__btn-controls {
   flex-direction: column;
+  display: none;
+  border-color: transparent;
+  position: relative;
+
+  .back-button {
+    position: absolute;
+    top: 0;
+    right: var(--space-3xs);
+    padding: var(--space-2xs);
+
+    &:hover {
+      svg {
+        rotate: 90deg;
+      }
+    }
+
+    svg {
+      transition: var(--transition-base);
+    }
+  }
 }
 
 .link-styling {
@@ -19,12 +38,14 @@
   background-color: var(--color-btn-default-bg);
   color: var(--color-btn-default-text);
   text-decoration: none;
+  transition: var(--transition-base);
+  position: relative;
 
-  &:hover {
+  &:hover,
+  &.hover-styling {
     transform: var(--btn-hover-transform, translateY(-0.2rem));
     background-color: var(--color-btn-hover-bg, var(--color-black));
     color: var(--color-btn-hover-text, var(--color-white));
-    transition: var(--transition-base);
   }
 
   &:active {
@@ -41,6 +62,12 @@
       var(--btn-focus-outline-style, dashed)
       var(--color-btn-focus-outline, #f09);
     outline-offset: var(--btn-focus-outline-offset, 2px);
+  }
+
+  &.focus-styling:hover {
+    transform: none;
+    background-color: var(--color-btn-default-bg);
+    color: var(--color-btn-default-text);
   }
 }
 

@@ -6,308 +6,69 @@
   </button>
 
   <div class="main-control-panel__scroll-container">
-    <div class="main-control-panel__typography stack-xs">
-      <input type="file" id="headline-font-upload" accept=".woff,.woff2,.ttf,.otf" style="display:none" />
-      <input type="file" id="body-font-upload" accept=".woff,.woff2,.ttf,.otf" style="display:none" />
-      <h2>Base Typography</h2>
-      <div class="select-input-container">
-        <label for="headline-font-selector">Headlines</label>
-        <div class="cluster" style="--cluster-alignment: center; flex-wrap: nowrap;">
-          <div class="custom-select">
-            <select name="headline-font-selector" id="headline-font-selector">
-              <option disabled selected>Select a font</option>
-            </select>
-          </div>
+    <div class="main-control-panel__base-controls">
 
-          <div>
-            <label class="button button--primary" for="headline-font-upload">
-              {% icon icon="plus", alt="", width="var(--space-xs)" %}
-              <input class="hidden" type="file" id="headline-font-upload" accept=".ttf,.otf,.woff,.woff2">
-            </label>
-          </div>
-        </div>
-      </div>
+      {% include "partials/blocks/base-typography.njk" %}
 
-      <div class="select-input-container">
-        <label for="body-font-selector">Body text</label>
-        <div class="cluster" style="--cluster-alignment: center; flex-wrap: nowrap;">
-          <div class="custom-select">
-            <select name="body-font-selector" id="body-font-selector">
-              <option disabled selected>Select a font</option>
-            </select>
-          </div>
+      <div class="main-control-panel__colors stack-xs">
+        <h2>Colors</h2>
+        <div class="stack-xs">
+          <button class="button--primary" id="refresh-colors">Generate Color Palette 🎨</button>
 
-          <div>
-            <label class="button button--primary" for="body-font-upload">
-              {% icon icon="plus", alt="", width="var(--space-xs)" %}
-              <input class="hidden" type="file" id="body-font-upload" accept=".ttf,.otf,.woff,.woff2">
-            </label>
-          </div>
-        </div>
-      </div>
-
-        <!-- Slider for minFontSize -->
-      <div class="slider-container slider-min">
-        <div class="slider-label">
-          <label for="minFontSize">Font Size (small):</label>
-          <span id="minFontSizeValue" class="slider-value">18</span>
-        </div>
-        <input type="range" id="minFontSize" name="minFontSize" min="16" max="19" step="1" value="16">
-      </div>
-
-      <!-- Slider for minTypeScale -->
-      <div class="slider-container slider-min">
-        <div class="slider-label">
-          <label for="minTypeScale">Type Scale (small):</label>
-          <span id="minTypeScaleValue" class="slider-value">1.2</span>
-        </div>
-        <input type="range" id="minTypeScale" name="minTypeScale" min="1.05" max="1.3" step="0.05" value="1.05">
-      </div>
-
-      <!-- Slider for maxFontSize -->
-      <div class="slider-container slider-max">
-        <div class="slider-label">
-          <label for="maxFontSize">Font Size:</label>
-          <span id="maxFontSizeValue" class="slider-value">21</span>
-        </div>
-        <input type="range" id="maxFontSize" name="maxFontSize" min="18" max="24" step="1" value="19">
-      </div>
-
-      <!-- Slider for maxTypeScale -->
-      <div class="slider-container slider-max">
-        <div class="slider-label">
-          <label for="contentWidth">Content Width:</label>
-          <span id="contentWidthValue" class="slider-value">400</span>
-        </div>
-        <input type="range" id="contentWidth" name="contentWidth" min="400" max="800" step="10" value="400">
-      </div>
-
-      <!-- Slider for maxTypeScale -->
-      <div class="slider-container slider-max">
-        <div class="slider-label">
-          <label for="maxTypeScale">Type Scale</label>
-          <span id="maxTypeScaleValue" class="slider-value">1.25</span>
-        </div>
-        <input type="range" id="maxTypeScale" name="maxTypeScale" min="1.1" max="1.45" step="0.05" value="1.2">
-      </div>
-
-      <!-- Slider for lineHeight -->
-      <div class="slider-container slider">
-        <div class="slider-label">
-          <label for="lineHeight">Line height:</label>
-          <span id="lineHeightValue" class="slider-value">1.5</span>
-        </div>
-        <input type="range" id="lineHeight" name="lineHeight" min="1" max="2.2" step="0.05" value="1.5">
-      </div>
-    </div>
-
-    <div class="main-control-panel__colors stack-xs">
-      <h2>Colors</h2>
-      <div class="stack-xs">
-        <div class="color-picker-group">
-          <h3>Headlines</h3>
-          <div class="color-inputs">
-            <input type="color" id="headline-color" name="headline-color" value="#0055ff">
-            <input type="text" id="headline-hex" name="headline-hex" value="#0055ff" maxlength="7">
-            <span class="warning headline-warning"></span>
-          </div>
-        </div>
-
-        <div class="color-picker-group">
-          <h3>Body text</h3>
-          <div class="color-inputs">
-            <input type="color" id="body-color" name="body-color" value="#000000">
-            <input type="text" id="body-hex" name="body-hex" value="#000000" maxlength="7">
-            <span class="warning body-warning"></span>
-          </div>
-        </div>
-
-        <div class="color-picker-group">
-          <h3>Background</h3>
-          <div class="color-inputs">
-            <input type="color" id="background-color" name="background-color" value="#faf4ed">
-            <input type="text" id="background-hex" name="background-hex" value="#faf4ed" maxlength="7">
-          </div>
-        </div>
-        
-        <div class="color-picker-group">
-          <h3>Details</h3>
-          <div class="color-inputs">
-            <input type="color" id="details-color" name="details-color" value="#ff5500">
-            <input type="text" id="details-hex" name="details-hex" value="#ff5500" maxlength="7">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-control-panel__css-output stack-xs">
-      <h2>Generated Type Scale</h2>
-      <details>
-        <summary>See Code</summary>
-        <div class="details-content">
-          <pre><code class="css-output language-css" id="cssOutput"></code></pre>
-        </div>
-      </details>
-      <button class="button--primary" id="copyCSSButton">
-        Copy CSS Variables
-        <span>
-          {% icon icon="copy", alt="", width="var(--space-xs)" %}
-        </span>
-      </button>
-    </div>
-
-    <div class="main-control-panel__interaction stack-s">
-      <h2>Interactive elements (WIP)</h2>
-      <!-- <label for="show-link">
-        Link
-        <input id="show-link" type="checkbox" checked>
-      </label>
-      <label for="show-button">
-        Button
-        <input id="show-button" type="checkbox" checked>
-      </label>
-      <label for="show-form">
-        Form
-        <input id="show-form" type="checkbox">
-      </label> -->
-      <div id="btn-controls" class="stack-xs">
-        <h2>Button</h2>
-        <div class="state-panel">
-          <label for="btn-default">
-            Default
-            <input class="hidden" type="radio" id="btn-default" name="btn-state" checked>
-          </label>
-          <label for="btn-hover">
-            Hover
-            <input class="hidden" type="radio" id="btn-hover" name="btn-state">
-          </label>
-          <label for="btn-focus">
-            Focus
-            <input class="hidden" type="radio" id="btn-focus" name="btn-state">
-          </label>
-          <label for="btn-active">
-            Active
-            <input class="hidden" type="radio" id="btn-active" name="btn-state">
-          </label>
-        </div>
-
-        <div class="btn-default-state stack-xs">
-          <div class="slider-container">
-            <div class="slider-label">
-              <label>Border Radius</label>
-              <span id="btnBorderRadiusValue" class="slider-value">1</span>
+          <div class="color-picker-group">
+            <h3>Headlines</h3>
+            <div class="color-inputs">
+              <input type="color" id="headline-color" name="headline-color" value="#0055ff">
+              <input type="text" id="headline-hex" name="headline-hex" value="#0055ff" maxlength="7">
+              <span class="warning headline-warning"></span>
             </div>
-            <input type="range" id="btnDefaultRadius" min="0" max="2" step="0.1" value="1">
           </div>
 
-          <div class="slider-container">
-            <div class="slider-label">
-              <label>Padding Block</label>
-              <span id="btnPaddingBlockValue" class="slider-value">1</span>
+          <div class="color-picker-group">
+            <h3>Body text</h3>
+            <div class="color-inputs">
+              <input type="color" id="body-color" name="body-color" value="#000000">
+              <input type="text" id="body-hex" name="body-hex" value="#000000" maxlength="7">
+              <span class="warning body-warning"></span>
             </div>
-            <input type="range" id="btnDefaultPaddingBlock" min="0" max="2" step="0.1" value="0.5">
+          </div>
+
+          <div class="color-picker-group">
+            <h3>Background</h3>
+            <div class="color-inputs">
+              <input type="color" id="background-color" name="background-color" value="#faf4ed">
+              <input type="text" id="background-hex" name="background-hex" value="#faf4ed" maxlength="7">
+            </div>
           </div>
           
-          <div class="slider-container">
-            <div class="slider-label">
-              <label>Padding Inline</label>
-              <span id="btnPaddingInlineValue" class="slider-value">1</span>
-            </div>
-            <input type="range" id="btnDefaultPaddingInline" min="0" max="4" step="0.1" value="1">
-          </div>
-
           <div class="color-picker-group">
-            <h3>Background Color</h3>
+            <h3>Details</h3>
             <div class="color-inputs">
-              <input type="color" id="btn-default-bg-color" name="btn-default-bg-color" value="#ffee2e">
-              <input type="text" id="btn-default-bg-hex" name="btn-default-bg-hex" value="#ffee2e" maxlength="7">
-              <span class="warning btn-default-warning"></span>
-            </div>
-          </div>
-
-          <div class="color-picker-group">
-            <h3>Text Color</h3>
-            <div class="color-inputs">
-              <input type="color" id="btn-default-text-color" name="btn-default-text-color" value="#000">
-              <input type="text" id="btn-default-text-hex" name="btn-default-text-hex" value="#000" maxlength="7">
-              <span class="warning btn-default-warning"></span>
+              <input type="color" id="details-color" name="details-color" value="#ff5500">
+              <input type="text" id="details-hex" name="details-hex" value="#ff5500" maxlength="7">
             </div>
           </div>
         </div>
       </div>
 
-      <div class="btn-hover-state stack-xs">
-        <p class="info"><span>The <i>hover state</i> is what happens when someone moves their mouse over a button or link. Helps show the user it's clickable.</span></p>
-        <div class="color-picker-group">
-          <h3>Background Color</h3>
-          <div class="color-inputs">
-            <input type="color" id="btn-hover-bg-color" name="btn-hover-bg-color" value="#1e5247">
-            <input type="text" id="btn-hover-bg-hex" name="btn-hover-bg-hex" value="#1e5247" maxlength="7">
-            <span class="warning btn-hover-warning"></span>
+      <div class="main-control-panel__css-output stack-xs">
+        <h2>Generated Type Scale</h2>
+        <details>
+          <summary>See Code</summary>
+          <div class="details-content">
+            <pre><code class="css-output language-css" id="cssOutput"></code></pre>
           </div>
-        </div>
-
-        <div class="color-picker-group">
-          <h3>Text Color</h3>
-          <div class="color-inputs">
-            <input type="color" id="btn-hover-text-color" name="btn-hover-text-color" value="#ffffff">
-            <input type="text" id="btn-hover-text-hex" name="btn-hover-text-hex" value="#ffffff" maxlength="7">
-            <span class="warning btn-hover-warning"></span>
-          </div>
-        </div>
-
-        <div class="stack-3xs">
-          <h3>Transform (drag me!)</h3>
-          <div class="drag-container">
-            <div class="drag-area">
-              <div class="drag-handle"></div>
-            </div>
-          </div>
-        </div>
+        </details>
+        <button class="button--primary" id="copyCSSButton">
+          Copy CSS Variables
+          <span>
+            {% icon icon="copy", alt="", width="var(--space-xs)" %}
+          </span>
+        </button>
       </div>
-
-      <div class="btn-focus-state stack-xs">
-        <p class="info"><span>The <i>focus state</i> is what it looks like when someone tabs to your element with their keyboard. Super important for accessibility. Doesn't have to be 'pretty', just needs to stand out, preferably with an <i>outline</i>.</span></p>
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Border Thickness</label>
-            <span id="btnFocusBorderThicknessValue" class="slider-value">1</span>
-          </div>
-          <input type="range" id="btnFocusBorderThickness" min="1" max="6" step="1" value="4">
-        </div>
-
-        <div class="slider-container">
-          <div class="slider-label">
-            <label>Border Offset</label>
-            <span id="btnFocusBorderOffsetValue" class="slider-value">1</span>
-          </div>
-          <input type="range" id="btnFocusBorderOffset" min="0" max="6" step="1" value="1">
-        </div>
-
-        <div class="select-input-container">
-          <label for="btn-border-style">Border Style</label>
-          <div class="custom-select">
-            <select name="btn-border-style" id="btn-border-style">
-              <option value="dotted">Dotted</option>
-              <option value="dashed">Dashed</option>
-              <option value="solid">Solid</option>
-              <option value="double">Double</option>
-              <option value="groove">Groove</option>
-              <option value="ridge">Ridge</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="color-picker-group pb-m">
-          <h3>Border Color</h3>
-          <div class="color-inputs">
-            <input type="color" id="btn-focus-outline-color" name="btn-focus-outline-color" value="#ff0099">
-            <input type="text" id="btn-focus-outline-hex" name="btn-focus-outline-hex" value="#ff0099" maxlength="7">
-          </div>
-        </div>
-
-        <button class="btn-styling focus-styling">Preview</button>
-      </div>      
     </div>
+    
+
+    {% include "partials/blocks/button-controls.njk" %}
   </div>
 </div>

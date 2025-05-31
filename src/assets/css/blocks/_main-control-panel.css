@@ -75,7 +75,9 @@
     > * {
       padding-block-end: var(--space-m);
       padding-inline: var(--space-s);
+    }
 
+    .main-control-panel__base-controls > * {
       &:not(:first-of-type) {
         border-top: 1px solid var(--color-lightgray);
         padding-block-start: var(--space-m);
@@ -101,17 +103,10 @@
   }
 }
 
-.grid-type-selector button::before {
-  content: "";
-  position: absolute;
-  width: 80%;
-  height: 1px;
-  background-color: var(--color-white);
-  rotate: 45deg;
-  top: 50%;
-  left: 10%;
+.main-control-panel__typography {
+  padding-block-end: var(--space-m);
 }
 
-body:has(#grid-debugger.visible) .grid-type-selector button::before {
-  display: none;
+.main-control-panel__colors {
+  padding-block-end: var(--space-m);
 }

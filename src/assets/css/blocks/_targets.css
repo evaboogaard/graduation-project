@@ -1,0 +1,9 @@
+body:has(#btn-controls:target) {
+  .main-control-panel__base-controls {
+    display: none;
+  }
+
+  .main-control-panel__btn-controls {
+    display: flex;
+  }
+}

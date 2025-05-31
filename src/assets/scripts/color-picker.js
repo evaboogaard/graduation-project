@@ -9,24 +9,18 @@ function getContrastRatio(rgb1, rgb2) {
 function showContrastWarning(textId, ratio) {
   const warningEls = document.querySelectorAll(`.${textId}-warning`);
   if (!warningEls.length) return;
-
   const meetsStandard = ratio >= 4.5;
-
   warningEls.forEach((warningEl) => {
     warningEl.innerHTML = "";
-
     if (!meetsStandard) {
       const iconSpan = document.createElement("span");
       iconSpan.className = "warning-icon";
       iconSpan.textContent = "⚠️";
-
       const textSpan = document.createElement("span");
       textSpan.className = "warning-text";
       textSpan.textContent = ` ${ratio.toFixed(2)}:1`;
-
       warningEl.appendChild(iconSpan);
       warningEl.appendChild(textSpan);
-
       const bgHex = document.getElementById("btn-default-bg-color").value;
       updateTextColor(warningEl, bgHex, true);
     }
@@ -40,14 +34,12 @@ function checkAllContrasts() {
     const ratio = getContrastRatio(fg, bg);
     showContrastWarning(id, ratio);
   });
-
   const btnBg = hexToRgb(document.getElementById("btn-default-bg-color").value);
   const btnText = hexToRgb(
     document.getElementById("btn-default-text-color").value,
   );
   const btnRatio = getContrastRatio(btnText, btnBg);
   showContrastWarning("btn-default", btnRatio);
-
   const btnHoverBg = hexToRgb(
     document.getElementById("btn-hover-bg-color").value,
   );
@@ -106,12 +98,9 @@ function setupColorSync(colorInputId, hexInputId) {
   const hexInput = document.getElementById(hexInputId);
   const cssVar = colorInput.dataset.cssVar;
   const key = `${colorInputId}-value`;
-
-  // Scroll target bepalen: bijvoorbeeld een element met class of id gelijk aan kleur-id zonder '-color'
   const targetId = colorInputId.replace("-color", "");
   const targetEl =
     document.querySelector(`.${targetId}`) || document.getElementById(targetId);
-
   const sync = (hex) => {
     hexInput.value = hex;
     colorInput.value = hex;
@@ -120,7 +109,6 @@ function setupColorSync(colorInputId, hexInputId) {
     localStorage.setItem(key, hex);
     checkAllContrasts();
   };
-
   colorInput.addEventListener("input", () => sync(colorInput.value));
   hexInput.addEventListener("input", () => {
     const hex = hexInput.value;
@@ -128,14 +116,11 @@ function setupColorSync(colorInputId, hexInputId) {
       sync(hex.startsWith("#") ? hex : `#${hex}`);
     }
   });
-
-  // Nieuw: scroll naar het target element bij focus (klikken)
   if (targetEl) {
     colorInput.addEventListener("focus", () => {
       targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
-
   const saved = localStorage.getItem(key);
   if (saved) {
     sync(saved);
@@ -167,3 +152,66 @@ window.addEventListener("DOMContentLoaded", () => {
   setupColorSync("btn-hover-text-color", "btn-hover-text-hex");
   setupColorSync("btn-focus-outline-color", "btn-focus-outline-hex");
 });
+
+function getRandomHexColor() {
+  const rand = () => Math.floor(Math.random() * 256);
+  const r = rand();
+  const g = rand();
+  const b = rand();
+  return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
+}
+
+function generateAccessiblePalette() {
+  let bg, headline, body, details;
+  let contrastHeadline, contrastBody;
+  do {
+    bg = getRandomHexColor();
+    headline = getRandomHexColor();
+    body = getRandomHexColor();
+    details = getRandomHexColor();
+    contrastHeadline = getContrastRatio(hexToRgb(headline), hexToRgb(bg));
+    contrastBody = getContrastRatio(hexToRgb(body), hexToRgb(bg));
+  } while (contrastHeadline < 4.5 || contrastBody < 4.5);
+  return { headline, body, background: bg, details };
+}
+
+function applyRandomColors() {
+  const { headline, body, background, details } = generateAccessiblePalette();
+  const palette = { headline, body, background, details };
+  Object.entries(palette).forEach(([id, hex]) => {
+    const colorInput = document.getElementById(`${id}-color`);
+    const hexInput = document.getElementById(`${id}-hex`);
+    hexInput.value = hex;
+    colorInput.value = hex;
+    hexInput.dispatchEvent(new Event("input"));
+  });
+}
+
+document
+  .getElementById("refresh-colors")
+  .addEventListener("click", applyRandomColors);
+
+export function getColorCSSVariables() {
+  const vars = [];
+
+  const ids = [
+    "background-color",
+    "headline-color",
+    "body-color",
+    "btn-default-bg-color",
+    "btn-default-text-color",
+    "btn-hover-bg-color",
+    "btn-hover-text-color",
+  ];
+
+  ids.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const name = `--${id}`;
+      const value = el.value;
+      vars.push(`  ${name}: ${value};`);
+    }
+  });
+
+  return vars.join("\n");
+}

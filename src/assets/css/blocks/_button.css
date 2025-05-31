@@ -69,6 +69,10 @@ button,
     }
 
     &.copied {
+      svg {
+        animation: copy-ani 0.5s ease-out;
+      }
+
       > span::before,
       > span::after {
         opacity: 1;
@@ -81,5 +85,27 @@ button,
         rotate: 0deg;
       }
     }
+  }
+}
+
+@keyframes copy-ani {
+  0% {
+    scale: 1;
+    rotate: 0;
+  }
+
+  80% {
+    scale: 0.8;
+    rotate: 360deg;
+  }
+
+  90% {
+    scale: 1.2;
+    rotate: 360deg;
+  }
+
+  100% {
+    scale: 1;
+    rotate: 360deg;
   }
 }

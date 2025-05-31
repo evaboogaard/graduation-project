@@ -84,7 +84,12 @@
       }
 
       option {
-        max-width: 22ch;
+        /* max-width: 22ch; */
+
+        &::checkmark {
+          content: "☞";
+          font-size: 1.3rem;
+        }
       }
     }
   }
