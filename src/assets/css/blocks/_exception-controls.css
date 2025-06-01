@@ -1,0 +1,47 @@
+.exception-controls {
+  display: none;
+  position: relative;
+
+  .back-button {
+    position: absolute;
+    right: var(--space-s);
+    top: 0;
+  }
+
+  > div {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-s);
+  }
+
+  details form {
+    display: flex;
+    flex-direction: column;
+
+    label:has(input:checked) {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: var(--color-white);
+    }
+
+    label {
+      position: relative;
+      transition: var(--transition-base);
+      cursor: pointer;
+      padding-inline: var(--space-2xs);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      &:has(input:focus-visible) {
+        outline: 3px dotted var(--color-white);
+      }
+    }
+  }
+}
+
+/* .exception-controls__h1-1 {
+  details p {
+    font-family: var(--font-headline);
+  }
+} */

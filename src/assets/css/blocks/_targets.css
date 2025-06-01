@@ -7,3 +7,31 @@ body:has(#btn-controls:target) {
     display: flex;
   }
 }
+
+body:has(#h1-1:target) {
+  .main-control-panel__base-controls {
+    display: none;
+  }
+
+  .exception-controls {
+    display: block;
+  }
+
+  .exception-controls__h1-1 {
+    display: flex;
+  }
+}
+
+body:has(#quote-1:target) {
+  .main-control-panel__base-controls {
+    display: none;
+  }
+
+  .exception-controls {
+    display: block;
+  }
+
+  .exception-controls__quote-1 {
+    display: flex;
+  }
+}

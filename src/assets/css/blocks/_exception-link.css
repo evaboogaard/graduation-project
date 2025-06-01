@@ -1,0 +1,26 @@
+.exception-link {
+  text-decoration: none;
+  position: relative;
+  display: block;
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:focus-visible::before {
+    opacity: 1;
+    outline: 3px dotted var(--color-white);
+  }
+
+  &::before {
+    content: "";
+    width: calc(100% + 2rem);
+    height: calc(100% + 2rem);
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transition: var(--transition-base);
+  }
+}

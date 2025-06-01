@@ -1,4 +1,4 @@
-import { updateUrl } from "./url-params.js";
+import { updateURL } from "./url-params.js";
 
 function markFontAsLoaded(font) {
   const loadedFonts = JSON.parse(
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     updateRecentFonts("headline", selectedFont);
     saveSelectedFonts(selectedFont, bodyFontSelect.value);
-    updateUrl();
+    updateURL();
     populateFontSelectWithRecentFonts(headlineFontSelect, "headline");
   });
 
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     updateRecentFonts("body", selectedFont);
     saveSelectedFonts(headlineFontSelect.value, selectedFont);
-    updateUrl();
+    updateURL();
     populateFontSelectWithRecentFonts(bodyFontSelect, "body");
   });
 

@@ -11,10 +11,30 @@ import "./font-selector.js";
 import "./color-picker.js";
 import "./interaction.js";
 import "./drag-handle.js";
+import "./exceptions.js";
 
 import { getColorCSSVariables } from "./color-picker.js";
+import { getButtonCSSVariables } from "./interaction.js";
+
+import { updateURL } from "./url-params.js";
 
 import { calculateTypeScale } from "https://esm.sh/utopia-core";
+
+function applyCustomButtonVars() {
+  const root = document.documentElement;
+  const buttonVars = getButtonCSSVariables();
+
+  Object.entries(buttonVars).forEach(([key, value]) => {
+    root.style.setProperty(key, value);
+  });
+
+  console.log("Button CSS Variables:", buttonVars);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateFontSteps();
+  applyCustomButtonVars();
+});
 
 // Initial configuration
 const initialOptions = {
@@ -57,6 +77,20 @@ function updateFontSteps() {
 
 // Initialize sliders and add event listeners
 document.addEventListener("DOMContentLoaded", () => {
+  // Checkbox logica
+  const baseTypographyCheckbox = document.getElementById("base-typography");
+  const colorsCheckbox = document.getElementById("colors");
+  const buttonsCheckbox = document.getElementById("button-styling");
+
+  [baseTypographyCheckbox, colorsCheckbox, buttonsCheckbox].forEach(
+    (checkbox) => {
+      checkbox.addEventListener("change", () => {
+        updateCSSOutput(); // Regenerate output when checkbox changes
+        updateURL(); // eventueel als je dit ook wilt bijhouden in de URL
+      });
+    },
+  );
+
   // Get slider elements
   const minFontSizeSlider = document.getElementById("minFontSize");
   const maxFontSizeSlider = document.getElementById("maxFontSize");
@@ -92,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFontSteps();
 
     updateCSSOutput();
+    updateURL();
   }
 
   // Function to handle slider changes
@@ -117,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateCSSOutput();
+    updateURL();
   }
 
   // Function to handle slider changes
@@ -137,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     updateCSSOutput();
+    updateURL();
   }
 
   // Add an event listener to handle input changes on the slider
@@ -158,20 +195,32 @@ document.addEventListener("DOMContentLoaded", () => {
   function generateCSSOutput(fontSteps) {
     let cssText = "";
 
-    fontSteps.forEach((stepObj) => {
-      const varName = `--step-${stepObj.step}`;
-      const varValue = stepObj.clamp;
-      cssText += `  ${varName}: ${varValue};\n`;
-    });
+    if (baseTypographyCheckbox.checked) {
+      cssText += `  /**\n   * Base typography\n   */\n`;
+      fontSteps.forEach((stepObj) => {
+        const varName = `--step-${stepObj.step}`;
+        const varValue = stepObj.clamp;
+        cssText += `  ${varName}: ${varValue};\n`;
+      });
 
-    // cssText += `  --min-type-scale: ${currentOptions.minTypeScale};\n`;
-    // cssText += `  --max-type-scale: ${currentOptions.maxTypeScale};\n`;
-    cssText += `  --content-max-width: ${
-      currentOptions.contentWidth || 37.5
-    }rem;\n`;
-    cssText += `  --line-height: ${currentOptions.lineHeight || 1.5};\n`;
+      cssText += `  --content-max-width: ${
+        currentOptions.contentWidth || 37.5
+      }rem;\n`;
+      cssText += `  --line-height: ${currentOptions.lineHeight || 1.5};\n`;
+    }
 
-    cssText += getColorCSSVariables() + "\n";
+    if (colorsCheckbox.checked) {
+      cssText += `\n  /**\n   * Colors\n   */\n`;
+      cssText += getColorCSSVariables() + "\n";
+    }
+
+    if (buttonsCheckbox.checked) {
+      cssText += `\n  /**\n   * Custom button variables\n   */\n`;
+      const buttonVars = getButtonCSSVariables();
+      Object.entries(buttonVars).forEach(([key, value]) => {
+        cssText += `  ${key}: ${value};\n`;
+      });
+    }
 
     return `:root {\n${cssText}}`;
   }

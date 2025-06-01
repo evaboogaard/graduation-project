@@ -112,4 +112,4 @@ if (match) {
   }
 }
 
-export { updateURL as updateUrl };
+export { updateURL as updateURL };

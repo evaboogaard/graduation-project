@@ -12,9 +12,7 @@
 
       <div class="main-control-panel__colors stack-xs">
         <h2>Colors</h2>
-        <div class="stack-xs">
-          <button class="button--primary" id="refresh-colors">Generate Color Palette 🎨</button>
-
+        <div class="stack-s">
           <div class="color-picker-group">
             <h3>Headlines</h3>
             <div class="color-inputs">
@@ -48,11 +46,33 @@
               <input type="text" id="details-hex" name="details-hex" value="#ff5500" maxlength="7">
             </div>
           </div>
+
+          <button class="button--primary" id="refresh-colors">Generate Random Palette 🎨</button>
         </div>
       </div>
 
       <div class="main-control-panel__css-output stack-xs">
-        <h2>Generated Type Scale</h2>
+        <h2>Generated Variables</h2>
+        <fieldset>
+          <legend>Include:</legend>
+          <div>
+            <label for="base-typography">
+              Base Typography
+              <input id="base-typography" type="checkbox" checked>
+            </label>
+
+            <label for="colors">
+              Colors
+              <input id="colors" type="checkbox" checked>
+            </label>
+
+            <label for="button-styling">
+              Button styling
+              <input id="button-styling" type="checkbox" checked>
+            </label>
+          </div>
+        </fieldset>
+
         <details>
           <summary>See Code</summary>
           <div class="details-content">
@@ -67,8 +87,10 @@
         </button>
       </div>
     </div>
-    
 
     {% include "partials/blocks/button-controls.njk" %}
+
+    {% include "partials/blocks/exception-controls.njk" %}
+
   </div>
 </div>

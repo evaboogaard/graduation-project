@@ -196,3 +196,29 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+export function getButtonCSSVariables() {
+  const computed = getComputedStyle(document.documentElement);
+
+  return {
+    "--btn-radius": computed.getPropertyValue("--btn-radius").trim(),
+    "--btn-padding-block": computed
+      .getPropertyValue("--btn-padding-block")
+      .trim(),
+    "--btn-padding-inline": computed
+      .getPropertyValue("--btn-padding-inline")
+      .trim(),
+    "--btn-focus-outline-thickness": computed
+      .getPropertyValue("--btn-focus-outline-thickness")
+      .trim(),
+    "--btn-focus-outline-offset": computed
+      .getPropertyValue("--btn-focus-outline-offset")
+      .trim(),
+    "--btn-focus-outline-style": computed
+      .getPropertyValue("--btn-focus-outline-style")
+      .trim(),
+    "--btn-focus-outline-color": computed
+      .getPropertyValue("--btn-focus-outline-color")
+      .trim(),
+  };
+}
