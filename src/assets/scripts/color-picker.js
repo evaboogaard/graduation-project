@@ -34,12 +34,14 @@ function checkAllContrasts() {
     const ratio = getContrastRatio(fg, bg);
     showContrastWarning(id, ratio);
   });
+
   const btnBg = hexToRgb(document.getElementById("btn-default-bg-color").value);
   const btnText = hexToRgb(
     document.getElementById("btn-default-text-color").value,
   );
   const btnRatio = getContrastRatio(btnText, btnBg);
   showContrastWarning("btn-default", btnRatio);
+
   const btnHoverBg = hexToRgb(
     document.getElementById("btn-hover-bg-color").value,
   );
@@ -48,6 +50,28 @@ function checkAllContrasts() {
   );
   const btnHoverRatio = getContrastRatio(btnHoverText, btnHoverBg);
   showContrastWarning("btn-hover", btnHoverRatio);
+
+  const copyButton = document.getElementById("copyCSSButton");
+  if (!copyButton) return;
+
+  const hasWarnings = document.querySelectorAll(".warning-icon").length > 0;
+  let warningMessage = document.getElementById("copy-warning");
+
+  if (hasWarnings) {
+    copyButton.disabled = true;
+    if (!warningMessage) {
+      warningMessage = document.createElement("p");
+      warningMessage.id = "copy-warning";
+      warningMessage.textContent =
+        "Want your CSS? Earn it. Fix the color contrasts and you can continue.";
+      copyButton.insertAdjacentElement("afterend", warningMessage);
+    }
+  } else {
+    copyButton.disabled = false;
+    if (warningMessage) {
+      warningMessage.remove();
+    }
+  }
 }
 
 const colors = [

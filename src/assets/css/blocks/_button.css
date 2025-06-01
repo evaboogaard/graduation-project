@@ -20,7 +20,16 @@ button,
     min-width: var(--space-xs);
   }
 
-  &:hover,
+  &:disabled {
+    opacity: 0.5;
+
+    &:hover {
+      animation: shake 0.18s;
+      animation-iteration-count: 5;
+    }
+  }
+
+  &:hover:not(:disabled),
   &:has(input[type="file"]:hover) {
     translate: 3px -3px;
     box-shadow: -3px 3px 0 var(--color-white);
@@ -107,5 +116,23 @@ button,
   100% {
     scale: 1;
     rotate: 360deg;
+  }
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0;
+  }
+
+  33% {
+    rotate: 2deg;
+  }
+
+  66% {
+    rotate: -2deg;
+  }
+
+  100% {
+    rotate: 0;
   }
 }

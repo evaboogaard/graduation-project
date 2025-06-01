@@ -164,8 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cssText += `  ${varName}: ${varValue};\n`;
     });
 
-    cssText += `  --min-type-scale: ${currentOptions.minTypeScale};\n`;
-    cssText += `  --max-type-scale: ${currentOptions.maxTypeScale};\n`;
+    // cssText += `  --min-type-scale: ${currentOptions.minTypeScale};\n`;
+    // cssText += `  --max-type-scale: ${currentOptions.maxTypeScale};\n`;
     cssText += `  --content-max-width: ${
       currentOptions.contentWidth || 37.5
     }rem;\n`;

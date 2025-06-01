@@ -40,6 +40,7 @@
   text-decoration: none;
   transition: var(--transition-base);
   position: relative;
+  font-family: var(--font-body);
 
   &:hover,
   &.hover-styling {
