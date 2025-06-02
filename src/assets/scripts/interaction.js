@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
   borderColorInput.dispatchEvent(new Event("input"));
 });
 
-const dragArea = document.querySelector(".drag-area");
-const handle = document.querySelector(".drag-handle");
+const dragArea = document.querySelector(".btn-drag-area");
+const handle = document.querySelector(".btn-drag-handle");
 const output = document.getElementById("output");
 
 let isDragging = false;

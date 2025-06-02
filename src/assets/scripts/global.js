@@ -6,8 +6,8 @@
  */
 
 import Prism from "prismjs";
-import "./url-params.js";
 import "./font-selector.js";
+import "./url-params.js";
 import "./color-picker.js";
 import "./interaction.js";
 import "./drag-handle.js";
@@ -27,8 +27,6 @@ function applyCustomButtonVars() {
   Object.entries(buttonVars).forEach(([key, value]) => {
     root.style.setProperty(key, value);
   });
-
-  console.log("Button CSS Variables:", buttonVars);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -62,9 +60,6 @@ function generateAndApplyCSSVariables(fontSteps) {
     root.style.setProperty(varName, varValue);
   });
 
-  // Optional: Log the generated CSS variables
-  console.log("Generated CSS Variables:", fontSteps);
-
   root.style.setProperty("--min-type-scale", currentOptions.minTypeScale);
   root.style.setProperty("--max-type-scale", currentOptions.maxTypeScale);
 }
@@ -86,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     (checkbox) => {
       checkbox.addEventListener("change", () => {
         updateCSSOutput(); // Regenerate output when checkbox changes
-        updateURL(); // eventueel als je dit ook wilt bijhouden in de URL
       });
     },
   );

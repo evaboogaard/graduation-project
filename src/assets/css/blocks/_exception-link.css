@@ -3,6 +3,10 @@
   position: relative;
   display: block;
 
+  &.double-column {
+    display: flex;
+  }
+
   &:hover::before {
     opacity: 1;
   }

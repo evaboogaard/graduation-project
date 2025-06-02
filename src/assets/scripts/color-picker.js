@@ -9,18 +9,29 @@ function getContrastRatio(rgb1, rgb2) {
 function showContrastWarning(textId, ratio) {
   const warningEls = document.querySelectorAll(`.${textId}-warning`);
   if (!warningEls.length) return;
+
   const meetsStandard = ratio >= 4.5;
   warningEls.forEach((warningEl) => {
     warningEl.innerHTML = "";
+
     if (!meetsStandard) {
-      const iconSpan = document.createElement("span");
-      iconSpan.className = "warning-icon";
-      iconSpan.textContent = "⚠️";
-      const textSpan = document.createElement("span");
-      textSpan.className = "warning-text";
-      textSpan.textContent = ` ${ratio.toFixed(2)}:1`;
-      warningEl.appendChild(iconSpan);
-      warningEl.appendChild(textSpan);
+      const wrapper = document.createElement("div");
+      wrapper.className = "warning-wrapper";
+
+      const icon = document.createElement("span");
+      icon.className = "warning-icon";
+      icon.textContent = "⚠️";
+
+      const popover = document.createElement("div");
+      popover.className = "warning-popover";
+      popover.textContent = `This doesn’t meet the minimum WCAG contrast guidelines. Please improve your contrast. It has to be at least 4.5:1, currently it is ${ratio.toFixed(
+        2,
+      )}:1.`;
+
+      wrapper.appendChild(icon);
+      wrapper.appendChild(popover);
+      warningEl.appendChild(wrapper);
+
       const bgHex = document.getElementById("btn-default-bg-color").value;
       updateTextColor(warningEl, bgHex, true);
     }

@@ -1,3 +1,59 @@
 a[href="#h1-1"] {
-  line-height: var(--line-height-h1-1, --line-height);
+  line-height: var(--line-height-h1-1, var(--line-height));
+}
+a[href="#p-1"] {
+  line-height: var(--line-height-p-1, var(--line-height));
+}
+a[href="#h2-1"] {
+  line-height: var(--line-height-h2-1, var(--line-height));
+}
+a[href="#p-2"] {
+  line-height: var(--line-height-p-2, var(--line-height));
+}
+a[href="#p-3"] {
+  line-height: var(--line-height-p-3, var(--line-height));
+}
+a[href="#quote-1"] {
+  line-height: var(--line-height-quote-1, var(--line-height));
+}
+a[href="#p-4"] {
+  line-height: var(--line-height-p-4, var(--line-height));
+}
+a[href="#alert-1"] {
+  line-height: var(--line-height-alert-1, var(--line-height));
+}
+a[href="#p-5"] {
+  line-height: var(--line-height-p-5, var(--line-height));
+}
+a[href="#p-6"] {
+  line-height: var(--line-height-p-6, var(--line-height));
+}
+a[href="#h2-2"] {
+  line-height: var(--line-height-h2-2, var(--line-height));
+}
+a[href="#p-7"] {
+  line-height: var(--line-height-p-7, var(--line-height));
+}
+a[href="#p-8"] {
+  line-height: var(--line-height-p-8, var(--line-height));
+}
+a[href="#quote-2"] {
+  line-height: var(--line-height-quote-2, var(--line-height));
+}
+a[href="#double-column-1"] {
+  p {
+    line-height: var(--line-height-double-column-1, var(--line-height));
+  }
+}
+a[href="#email"] {
+  line-height: var(--line-height-email, var(--line-height));
+}
+a[href="#h2-3"] {
+  line-height: var(--line-height-h2-3, var(--line-height));
+}
+a[href="#p-9"] {
+  line-height: var(--line-height-p-9, var(--line-height));
+}
+a[href="#p-10"] {
+  line-height: var(--line-height-p-10, var(--line-height));
 }

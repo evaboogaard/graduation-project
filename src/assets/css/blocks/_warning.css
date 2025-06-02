@@ -1,9 +1,39 @@
 .warning {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   right: 5%;
+  top: 1.5rem;
+  translate: 0 -25%;
+  z-index: 1000;
+}
+
+.warning-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  /* z-index: 1000; */
+}
+
+.warning-popover {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-3xs);
+  background: var(--color-white);
+  border: 1px solid var(--color-lightgray);
+  color: var(--color-black);
+  padding: var(--space-3xs);
+  border-radius: var(--space-3xs);
+  font-size: 0.85rem;
+  width: 220px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  /* z-index: 1000; */
+}
+
+/* Toon popover op hover of focus */
+.warning-wrapper:hover .warning-popover,
+.warning-wrapper:focus-within .warning-popover {
+  display: block;
 }
 
 #copy-warning {

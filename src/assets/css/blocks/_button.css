@@ -97,6 +97,22 @@ button,
   }
 }
 
+.back-button {
+  position: absolute;
+  top: 0;
+  right: var(--space-3xs);
+
+  &:hover {
+    svg {
+      rotate: 90deg;
+    }
+  }
+
+  svg {
+    transition: var(--transition-base);
+  }
+}
+
 @keyframes copy-ani {
   0% {
     scale: 1;

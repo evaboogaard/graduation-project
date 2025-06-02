@@ -3,6 +3,7 @@
     font-size: var(--step-3);
     text-align: center;
     font-family: var(--font-headline);
+    color: var(--color-white);
   }
 
   input {

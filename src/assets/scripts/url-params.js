@@ -1,30 +1,6 @@
 const ids = ["maxFontSize", "contentWidth", "maxTypeScale", "lineHeight"];
 const sliders = ids.map((id) => document.getElementById(id));
 
-function updateURL() {
-  const sliderValues = sliders.map((s) => s.value);
-  const colorValues = colorPairs.map(({ color }) =>
-    color.value.replace("#", ""),
-  );
-
-  // Get selected fonts
-  const headlineFont = document.getElementById("headline-font-selector").value;
-  const bodyFont = document.getElementById("body-font-selector").value;
-
-  // Encode fonts to handle spaces and special characters
-  const fontValues = [
-    encodeURIComponent(headlineFont),
-    encodeURIComponent(bodyFont),
-  ];
-
-  const newURL =
-    window.location.pathname +
-    "?" +
-    [...sliderValues, ...colorValues, ...fontValues].join(",");
-
-  window.history.replaceState({}, "", newURL);
-}
-
 const colorPairs = [
   {
     color: document.getElementById("headline-color"),
@@ -43,6 +19,51 @@ const colorPairs = [
     hex: document.getElementById("background-hex"),
   },
 ];
+function updateURL() {
+  const sliderValues = sliders.map((s) => s.value);
+  const colorValues = colorPairs.map(({ color }) =>
+    color.value.replace("#", ""),
+  );
+
+  const headlineSelector = document.getElementById("headline-font-selector");
+  const bodySelector = document.getElementById("body-font-selector");
+
+  const cleanFont = (font) => {
+    if (!font) return "";
+    const lower = font.toLowerCase().trim();
+    if (lower === "" || lower === "select a font") return "";
+    return font;
+  };
+
+  // Haal fontwaarden uit de selectors
+  let headlineFont = cleanFont(headlineSelector?.value);
+  let bodyFont = cleanFont(bodySelector?.value);
+
+  // Als ze leeg zijn, probeer ze uit de URL te halen
+  if (!headlineFont || !bodyFont) {
+    const match = window.location.search.match(/\?([^#]+)/);
+    if (match) {
+      const values = match[1].split(",");
+      const savedHeadline = decodeURIComponent(
+        values[sliders.length + colorPairs.length] || "",
+      );
+      const savedBody = decodeURIComponent(
+        values[sliders.length + colorPairs.length + 1] || "",
+      );
+      if (!headlineFont) headlineFont = cleanFont(savedHeadline);
+      if (!bodyFont) bodyFont = cleanFont(savedBody);
+    }
+  }
+
+  const fontValues = [headlineFont, bodyFont].map(encodeURIComponent);
+
+  const newURL =
+    window.location.pathname +
+    "?" +
+    [...sliderValues, ...colorValues, ...fontValues].join(",");
+
+  window.history.replaceState({}, "", newURL);
+}
 
 colorPairs.forEach(({ color, hex }) => {
   function sync(val) {
@@ -63,6 +84,7 @@ colorPairs.forEach(({ color, hex }) => {
   });
 });
 
+// Lees waarden uit de URL bij het laden
 const match = window.location.search.match(/\?([^#]+)/);
 if (match) {
   const values = match[1].split(",");
@@ -91,25 +113,83 @@ if (match) {
     });
 
   // Font values
-  const headlineFont = decodeURIComponent(
+  const rawHeadlineFont = decodeURIComponent(
     values[sliders.length + colorPairs.length] || "",
   );
-  const bodyFont = decodeURIComponent(
+  const rawBodyFont = decodeURIComponent(
     values[sliders.length + colorPairs.length + 1] || "",
   );
 
+  // Zelfde clean functie als updateURL
+  const cleanFont = (font) => {
+    if (!font) return "";
+    const lower = font.toLowerCase().trim();
+    if (lower === "" || lower === "select a font") return "";
+    return font;
+  };
+
+  const headlineFont = cleanFont(rawHeadlineFont);
+  const bodyFont = cleanFont(rawBodyFont);
+
+  // Zet fonts alleen als ze valide zijn
+  const headlineSelector = document.getElementById("headline-font-selector");
   if (headlineFont) {
-    document.getElementById("headline-font-selector").value = headlineFont;
+    headlineSelector.value = headlineFont;
     document.documentElement.style.setProperty(
       "--font-headline",
       `'${headlineFont}'`,
     );
+  } else {
+    headlineSelector.value = ""; // of de lege optie value
   }
 
+  const bodySelector = document.getElementById("body-font-selector");
   if (bodyFont) {
-    document.getElementById("body-font-selector").value = bodyFont;
+    bodySelector.value = bodyFont;
     document.documentElement.style.setProperty("--font-body", `'${bodyFont}'`);
+  } else {
+    bodySelector.value = "";
   }
 }
 
-export { updateURL as updateURL };
+export { updateURL };
+
+function restoreFromURL() {
+  const query = window.location.search.slice(1);
+  if (!query) return;
+
+  const values = query.split(",");
+
+  const sliderCount = sliders.length;
+  const colorCount = colorPairs.length;
+
+  const sliderValues = values.slice(0, sliderCount);
+  const colorValues = values.slice(sliderCount, sliderCount + colorCount);
+  const [headlineFont, bodyFont] = values.slice(sliderCount + colorCount);
+
+  // Restore slider values
+  sliders.forEach((slider, index) => {
+    slider.value = sliderValues[index];
+  });
+
+  // Restore color values
+  colorPairs.forEach(({ color }, index) => {
+    color.value = "#" + colorValues[index];
+  });
+
+  // Restore fonts
+  if (headlineFont) {
+    document.getElementById("headline-font-selector").value =
+      decodeURIComponent(headlineFont);
+  }
+  if (bodyFont) {
+    document.getElementById("body-font-selector").value =
+      decodeURIComponent(bodyFont);
+  }
+
+  console.log("Restored fonts:", headlineFont, bodyFont);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  restoreFromURL();
+});

@@ -10,8 +10,6 @@ const inputDir = "src/assets/icons";
 const outputFile = "dist/assets/icons.svg";
 
 export async function svgToSymbols() {
-  console.log("SVG to Symbols running...");
-
   try {
     const files = await fs.promises.readdir(inputDir);
     const svgFiles = files.filter((file) => file.endsWith(".svg"));
@@ -36,7 +34,7 @@ export async function svgToSymbols() {
         const id = `svg-${path.basename(file, ".svg")}`;
         const symbol = `<symbol viewBox="${viewBox}" id="${id}" xmlns="http://www.w3.org/2000/svg">${svgContent}</symbol>`;
         return symbol;
-      })
+      }),
     );
 
     const svgContent = `

@@ -8,30 +8,48 @@ body:has(#btn-controls:target) {
   }
 }
 
-body:has(#h1-1:target) {
+body:has(#h1-1:target),
+body:has(#p-1:target),
+body:has(#h2-1:target),
+body:has(#p-2:target),
+body:has(#p-3:target),
+body:has(#quote-1:target),
+body:has(#p-4:target),
+body:has(#alert-1:target),
+body:has(#p-5:target),
+body:has(#p-6:target),
+body:has(#h2-2:target),
+body:has(#p-7:target),
+body:has(#p-8:target),
+body:has(#quote-2:target),
+body:has(#double-column-1:target),
+body:has(#p-9:target),
+body:has(#p-10:target) {
   .main-control-panel__base-controls {
     display: none;
   }
 
   .exception-controls {
     display: block;
-  }
-
-  .exception-controls__h1-1 {
-    display: flex;
   }
 }
 
-body:has(#quote-1:target) {
-  .main-control-panel__base-controls {
-    display: none;
-  }
-
-  .exception-controls {
-    display: block;
-  }
-
-  .exception-controls__quote-1 {
-    display: flex;
-  }
+body:has(#h1-1:target) .exception-controls__h1-1,
+body:has(#p-1:target) .exception-controls__p-1,
+body:has(#h2-1:target) .exception-controls__h2-1,
+body:has(#p-2:target) .exception-controls__p-2,
+body:has(#p-3:target) .exception-controls__p-3,
+body:has(#quote-1:target) .exception-controls__quote-1,
+body:has(#p-4:target) .exception-controls__p-4,
+body:has(#alert-1:target) .exception-controls__alert-1,
+body:has(#p-5:target) .exception-controls__p-5,
+body:has(#p-6:target) .exception-controls__p-6,
+body:has(#h2-2:target) .exception-controls__h2-2,
+body:has(#p-7:target) .exception-controls__p-7,
+body:has(#p-8:target) .exception-controls__p-8,
+body:has(#quote-2:target) .exception-controls__quote-2,
+body:has(#double-column-1:target) .exception-controls__double-column-1,
+body:has(#p-9:target) .exception-controls__p-9,
+body:has(#p-10:target) .exception-controls__p-10 {
+  display: flex;
 }

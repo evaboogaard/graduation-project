@@ -3,9 +3,7 @@
   position: relative;
 
   .back-button {
-    position: absolute;
     right: var(--space-s);
-    top: 0;
   }
 
   > div {
@@ -40,8 +38,31 @@
   }
 }
 
-/* .exception-controls__h1-1 {
-  details p {
+.exception-controls__h1-1,
+.exception-controls__h2-1,
+.exception-controls__h2-2,
+.exception-controls__h2-3 {
+  details label {
     font-family: var(--font-headline);
   }
-} */
+}
+
+.exception-controls__p-1,
+.exception-controls__p-2,
+.exception-controls__p-3,
+.exception-controls__quote-1,
+.exception-controls__p-4,
+.exception-controls__alert-1,
+.exception-controls__p-5,
+.exception-controls__p-6,
+.exception-controls__p-7,
+.exception-controls__p-8,
+.exception-controls__quote-2,
+.exception-controls__double-column-1,
+.exception-controls__email,
+.exception-controls__p-9,
+.exception-controls__p-10 {
+  details label {
+    font-family: var(--font-body);
+  }
+}

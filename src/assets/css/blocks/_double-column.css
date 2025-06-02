@@ -4,6 +4,10 @@
   align-items: baseline;
   text-align: justify;
 
+  p {
+    font-size: inherit;
+  }
+
   @container layout (max-width: 40rem) {
     flex-wrap: wrap;
     gap: var(--space-s);
