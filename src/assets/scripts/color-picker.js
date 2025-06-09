@@ -136,6 +136,14 @@ function setupColorSync(colorInputId, hexInputId) {
   const targetId = colorInputId.replace("-color", "");
   const targetEl =
     document.querySelector(`.${targetId}`) || document.getElementById(targetId);
+
+  const excludeFromStorage = new Set([
+    "headline-color",
+    "details-color",
+    "body-color",
+    "background-color",
+  ]);
+
   const sync = (hex) => {
     hexInput.value = hex;
     colorInput.value = hex;
@@ -156,7 +164,10 @@ function setupColorSync(colorInputId, hexInputId) {
       targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   }
-  const saved = localStorage.getItem(key);
+  const saved = !excludeFromStorage.has(colorInputId)
+    ? localStorage.getItem(key)
+    : null;
+
   if (saved) {
     sync(saved);
   } else {
