@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const editableCheckbox = document.getElementById(`${id}-contenteditable`);
       const slider = document.getElementById(`lineHeight${id}`);
       const valueDisplay = document.getElementById(`lineHeight${id}Value`);
+      const selectAlign = document.getElementById(`text-align-${id}`);
 
       // Set initial font size based on checked radio
       const checkedRadio = container.querySelector(
@@ -66,8 +67,17 @@ document.addEventListener("DOMContentLoaded", () => {
           valueDisplay.textContent = value;
           targetLink.style.setProperty(`--line-height-${id}`, value);
         }
-        // updateLineHeight();
         slider.addEventListener("input", updateLineHeight);
+      }
+
+      // NEW: Update text-align on select change
+      if (selectAlign && targetLink) {
+        // Optionally, set an initial value (if you want to read a default)
+        targetLink.style.textAlign = selectAlign.value;
+
+        selectAlign.addEventListener("change", () => {
+          targetLink.style.textAlign = selectAlign.value;
+        });
       }
     });
 });

@@ -9,6 +9,10 @@
     color: var(--color-white);
     margin-block-end: var(--space-2xs);
 
+    &::before {
+      display: none;
+    }
+
     span {
       transition: var(--transition-base);
       text-decoration: underline;
@@ -18,6 +22,7 @@
       flex-shrink: 0;
       min-width: var(--space-s);
       transition: 0.4s ease-out;
+      margin-inline-end: var(--space-3xs);
     }
 
     &:hover {

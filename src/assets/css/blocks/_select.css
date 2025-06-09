@@ -84,12 +84,87 @@
       }
 
       option {
-        /* max-width: 22ch; */
-
         &::checkmark {
           content: "☞";
           font-size: 1.3rem;
         }
+      }
+    }
+  }
+}
+
+select[name="text-align"] {
+  cursor: pointer;
+
+  &,
+  &::picker(select) {
+    appearance: base-select;
+
+    --height: 0.15rem;
+    --width: 75%;
+
+    option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &::checkmark {
+        content: "☞";
+        font-size: 1.3rem;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--height) * 2);
+        height: calc(var(--height) * 15);
+        width: 3rem;
+        padding-block: calc(var(--height) * 4);
+        padding-inline-end: var(--space-2xs);
+
+        span {
+          height: var(--height);
+          background-color: var(--color-black);
+          border-radius: var(--space-2xs);
+        }
+      }
+    }
+
+    option[value="start"] {
+      div span {
+        width: var(--width);
+
+        &:nth-of-type(2) {
+          width: 100%;
+        }
+      }
+    }
+
+    option[value="end"] {
+      div span {
+        width: var(--width);
+        align-self: end;
+
+        &:nth-of-type(2) {
+          width: 100%;
+        }
+      }
+    }
+
+    option[value="center"] {
+      div span {
+        width: var(--width);
+        align-self: center;
+
+        &:nth-of-type(2) {
+          width: 100%;
+        }
+      }
+    }
+
+    option[value="justify"] {
+      div span {
+        width: 100%;
       }
     }
   }

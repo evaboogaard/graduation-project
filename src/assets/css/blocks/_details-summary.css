@@ -7,15 +7,16 @@ details {
 
   summary {
     cursor: pointer;
-    padding: var(--space-3xs) var(--space-2xs);
+    padding: var(--space-2xs);
+    /* padding-block-end: var(--space-3xs); */
     background-color: color-mix(in srgb, var(--color-lightgray), #0000 80%);
     display: flex;
     gap: var(--space-2xs);
     transition: var(--transition-base);
+    border-radius: var(--space-s);
 
     &:hover {
       background-color: color-mix(in srgb, var(--color-lightgray), #0000 90%);
-      border-radius: 5px;
     }
 
     &::before {
@@ -24,8 +25,14 @@ details {
     }
   }
 
-  &:open summary::before {
-    rotate: 90deg;
+  &:open {
+    summary {
+      border-radius: var(--space-s) var(--space-s) 0 0;
+
+      &::before {
+        rotate: 90deg;
+      }
+    }
   }
 }
 

@@ -155,7 +155,7 @@ button,
 
 .dialog-btn {
   color: var(--color-headline);
-  position: fixed;
+  position: absolute;
   top: var(--space-s);
   left: var(--space-s);
   padding: var(--space-3xs);

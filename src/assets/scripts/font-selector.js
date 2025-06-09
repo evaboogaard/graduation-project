@@ -84,15 +84,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       select.appendChild(recentGroup);
     }
-    const allGroup = document.createElement("optgroup");
-    allGroup.label = "All fonts";
-    for (const font of allFonts) {
-      if (!recentFonts.includes(font)) {
-        await loadFont(font);
-        allGroup.appendChild(createOption(font));
-      }
-    }
-    select.appendChild(allGroup);
 
     const savedFonts = JSON.parse(localStorage.getItem("customFonts") || "[]");
     if (savedFonts.length > 0) {
@@ -107,6 +98,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       select.appendChild(customGroup);
     }
+
+    const allGroup = document.createElement("optgroup");
+    allGroup.label = "All fonts";
+    for (const font of allFonts) {
+      if (!recentFonts.includes(font)) {
+        await loadFont(font);
+        allGroup.appendChild(createOption(font));
+      }
+    }
+    select.appendChild(allGroup);
 
     const uploadOption = document.createElement("option");
     uploadOption.value = "__upload__";
