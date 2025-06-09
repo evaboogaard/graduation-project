@@ -79,7 +79,8 @@
 
     .main-control-panel__base-controls > * {
       &:not(:first-of-type) {
-        border-top: 1px solid var(--color-lightgray);
+        border-top: 1px solid
+          color-mix(in srgb, var(--color-lightgray), #0000 80%);
         padding-block-start: var(--space-m);
       }
     }

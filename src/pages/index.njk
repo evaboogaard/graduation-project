@@ -68,9 +68,15 @@ permalink: /
     <p><a class="exception-link" href="#p-9">Typography is not just about letters; it’s about personality, readability, and making sure your audience doesn’t suffer an eye strain-induced meltdown. Choose wisely, space generously, and for the love of all things legible, never, ever use Papyrus.</a></p>
 
     <p><a class="exception-link" href="#p-10">And if all else fails, just use Helvetica. No one ever got fired for using Helvetica.</a></p>
+
+    {% include "partials/blocks/small-typography-panel.njk" %}
   </article>
 
-  <button class="drag-handle" aria-label="Resize panel" aria-valuemin="50" aria-valuemax="500" aria-valuenow="100" aria-orientation="vertical" role="separator"></button>
+  <button class="drag-handle" aria-label="Resize panel" aria-valuemin="50" aria-valuemax="500" aria-valuenow="100" aria-orientation="vertical" role="separator">
+    <span>
+      {% icon icon="drag", alt="", width="var(--space-s)" %}
+    </span>
+  </button>
 
   {% include "partials/blocks/main-control-panel.njk" %}
 </div>

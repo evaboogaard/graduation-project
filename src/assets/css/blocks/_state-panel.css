@@ -1,7 +1,7 @@
 .state-panel {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  border: 1px solid var(--color-lightgray);
+  /* border: 1px solid var(--color-lightgray); */
   margin-block: var(--space-m) var(--space-s);
 
   label {
@@ -10,6 +10,7 @@
     cursor: pointer;
     transition: var(--transition-base);
     position: relative;
+    border-bottom: 1px solid var(--color-lightgray);
 
     &:hover {
       background-color: var(--color-mediumgray-hover);
@@ -21,8 +22,8 @@
     }
 
     &:has(input:checked) {
-      background-color: var(--color-lightgray);
-      color: var(--color-black);
+      border: 1px solid var(--color-lightgray);
+      border-bottom: 1px solid transparent;
     }
     /* 
     &:first-of-type {

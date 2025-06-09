@@ -309,7 +309,6 @@ p,
   color: #fff;
   font-size: var(--step-4);
   padding-inline: 0;
-  padding-block: 0.75em;
   line-height: 1.4;
   text-wrap: balance;
   text-align: center;
@@ -336,7 +335,7 @@ p,
     margin-block-start: var(--space-xs-s);
   }
 
-  &::before,
+  /* &::before,
   &::after {
     content: "";
     position: absolute;
@@ -354,7 +353,7 @@ p,
   &::after {
     inset: -0.25em -0.25em;
     transform: skewX(-1deg) skewY(-1deg) skewX(3deg);
-  }
+  } */
 }
 
 /* .figure {

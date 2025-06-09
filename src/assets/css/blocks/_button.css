@@ -15,9 +15,19 @@ button,
   padding: var(--space-2xs);
   gap: var(--space-2xs);
 
-  svg {
+  svg,
+  .plus {
     transition: var(--transition-base);
-    min-width: var(--space-xs);
+  }
+
+  &:has(.plus) {
+    aspect-ratio: 1;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .plus {
+    font-size: 1.5rem;
   }
 
   &:disabled {
@@ -34,7 +44,8 @@ button,
     translate: 3px -3px;
     box-shadow: -3px 3px 0 var(--color-white);
 
-    svg {
+    svg,
+    .plus {
       rotate: 90deg;
     }
   }

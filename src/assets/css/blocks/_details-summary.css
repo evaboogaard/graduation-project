@@ -7,6 +7,25 @@ details {
 
   summary {
     cursor: pointer;
+    padding: var(--space-3xs) var(--space-2xs);
+    background-color: color-mix(in srgb, var(--color-lightgray), #0000 80%);
+    display: flex;
+    gap: var(--space-2xs);
+    transition: var(--transition-base);
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--color-lightgray), #0000 90%);
+      border-radius: 5px;
+    }
+
+    &::before {
+      content: "☞";
+      transition: var(--transition-base);
+    }
+  }
+
+  &:open summary::before {
+    rotate: 90deg;
   }
 }
 

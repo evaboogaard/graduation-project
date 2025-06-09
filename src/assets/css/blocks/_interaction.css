@@ -20,7 +20,6 @@
   border-radius: var(--btn-radius, 1rem);
   padding-block: var(--btn-padding-block, 0.5rem);
   padding-inline: var(--btn-padding-inline, 1rem);
-  border: 2px solid var(--color-headline);
   width: fit-content;
   margin-inline: auto;
   background-color: var(--color-btn-default-bg);

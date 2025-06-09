@@ -7,26 +7,32 @@
   padding: 0;
   position: relative;
 
-  &::before {
-    content: "⬌";
+  > span {
     font-size: 1.25rem;
     position: fixed;
     bottom: 17.5vh;
-    width: 1.5rem;
+    width: var(--space-m);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #ccc;
     z-index: 1000;
-    translate: -50% 0;
+    translate: calc(-50% + 2.5px) 0;
     transition: var(--transition-base);
   }
 
-  &:hover::before,
-  &:active::before {
-    scale: 1.5;
+  &:hover,
+  &:active {
+    box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+
+    > span {
+      scale: 1.35;
+    }
   }
 
-  &:active::before {
+  &:active > span {
     background-color: color-mix(in srgb, #ccc, black 25%);
   }
 

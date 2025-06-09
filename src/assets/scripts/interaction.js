@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const borderThicknessInput = document.getElementById(
-    "btnFocusBorderThickness",
+    "btnFocusOutlineThickness",
   );
-  const borderOffsetInput = document.getElementById("btnFocusBorderOffset");
+  const borderOffsetInput = document.getElementById("btnFocusOutlineOffset");
   const borderStyleSelect = document.getElementById("btn-border-style");
   const borderColorInput = document.getElementById("btn-focus-outline-color");
 
   const borderThicknessValue = document.getElementById(
-    "btnFocusBorderThicknessValue",
+    "btnFocusOutlineThicknessValue",
   );
   const borderOffsetValue = document.getElementById(
-    "btnFocusBorderOffsetValue",
+    "btnFocusOutlineOffsetValue",
   );
 
   const remToPx = (rem) => {

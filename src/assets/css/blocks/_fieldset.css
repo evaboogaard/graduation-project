@@ -1,0 +1,23 @@
+fieldset {
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: var(--color-lightgray);
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    margin-inline: var(--space-3xs);
+    padding-inline: var(--space-xs);
+    border-left: 3px solid var(--color-lightgray);
+
+    label {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

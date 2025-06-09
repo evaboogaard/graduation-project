@@ -1,4 +1,11 @@
-const ids = ["maxFontSize", "contentWidth", "maxTypeScale", "lineHeight"];
+const ids = [
+  "minFontSize",
+  "maxFontSize",
+  "minTypeScale",
+  "maxTypeScale",
+  "contentWidth",
+  "lineHeight",
+];
 const sliders = ids.map((id) => document.getElementById(id));
 
 const colorPairs = [

@@ -1,0 +1,15 @@
+.small-typography-panel {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: var(--color-mediumgray);
+  padding: var(--space-s);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+
+  @container layout (min-width: 42rem) {
+    display: none;
+  }
+}
