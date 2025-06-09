@@ -8,7 +8,7 @@
     font-size: inherit;
   }
 
-  @container layout (max-width: 40rem) {
+  @container layout (max-width: 42em) {
     flex-wrap: wrap;
     gap: var(--space-s);
   }

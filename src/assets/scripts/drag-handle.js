@@ -1,6 +1,11 @@
 const pageGrid = document.querySelector(".page-grid");
 const dragHandle = document.querySelector(".drag-handle");
-const toggleButton = document.querySelector(".main-control-panel__button");
+const mainControlPanelButton = document.querySelector(
+  ".main-control-panel__button",
+);
+const smallTypographyPanelButton = document.querySelector(
+  ".small-typography-panel__button",
+);
 
 const pxToRem = (px) => px / 16;
 
@@ -39,32 +44,41 @@ document.addEventListener("mousemove", (e) => {
   // Als rechter kolom breder is dan 50px en aria-expanded is false, zet aria-expanded op true
   if (
     rightWidth > 50 &&
-    toggleButton.getAttribute("aria-expanded") === "false"
+    mainControlPanelButton.getAttribute("aria-expanded") === "false"
   ) {
-    toggleButton.setAttribute("aria-expanded", "true");
+    mainControlPanelButton.setAttribute("aria-expanded", "true");
   }
 });
 
 // Button click toggle aria-expanded en zet rechter kolom breedte naar 50px als 'dicht'
-toggleButton.addEventListener("click", () => {
-  const expanded = toggleButton.getAttribute("aria-expanded") === "true";
+mainControlPanelButton.addEventListener("click", () => {
+  const expanded =
+    mainControlPanelButton.getAttribute("aria-expanded") === "true";
 
   const gridRect = pageGrid.getBoundingClientRect();
 
   if (expanded) {
     // Paneel inklappen
-    toggleButton.setAttribute("aria-expanded", "false");
+    mainControlPanelButton.setAttribute("aria-expanded", "false");
     const leftWidth = gridRect.width - 50 - 5; // 5px drag handle
     pageGrid.style.gridTemplateColumns = `${pxToRem(
       leftWidth,
     )}rem 0.3125rem 3.125rem`; // 50px = 3.125rem
   } else {
     // Paneel uitklappen
-    toggleButton.setAttribute("aria-expanded", "true");
+    mainControlPanelButton.setAttribute("aria-expanded", "true");
     const rightWidth = 450; // 450px
     const leftWidth = gridRect.width - rightWidth - 5;
     pageGrid.style.gridTemplateColumns = `${pxToRem(
       leftWidth,
     )}rem 0.3125rem ${pxToRem(rightWidth)}rem`;
   }
+});
+
+smallTypographyPanelButton.addEventListener("click", () => {
+  const parentPanel = smallTypographyPanelButton.closest(
+    ".small-typography-panel",
+  );
+  const isExpanded = parentPanel.getAttribute("aria-expanded") === "true";
+  parentPanel.setAttribute("aria-expanded", String(!isExpanded));
 });

@@ -17,30 +17,6 @@
   display: none;
 }
 
-/* .slider-max {
-  display: none;
-} */
-
-/* @media (width > 42em) {
-  .slider-max {
-    display: flex;
-  }
-
-  .slider-min {
-    display: none;
-  }
-}
-
-@container layout (min-width: 42rem) {
-  .slider-max {
-    display: flex;
-  }
-
-  .slider-min {
-    display: none;
-  }
-} */
-
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
