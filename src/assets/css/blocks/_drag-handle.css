@@ -5,4 +5,32 @@
   width: 5px;
   height: 100%;
   padding: 0;
+  position: relative;
+
+  &::before {
+    content: "⬌";
+    font-size: 1.25rem;
+    position: fixed;
+    bottom: 17.5vh;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #ccc;
+    z-index: 1000;
+    translate: -50% 0;
+    transition: var(--transition-base);
+  }
+
+  &:hover::before,
+  &:active::before {
+    scale: 1.5;
+  }
+
+  &:active::before {
+    background-color: color-mix(in srgb, #ccc, black 25%);
+  }
+
+  @media (width < 42em) {
+    display: none;
+  }
 }

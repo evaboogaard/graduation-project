@@ -2,4 +2,8 @@
   display: grid;
   grid-template-columns: 2.5fr 5px 1fr;
   transition: var(--transition-base);
+
+  @media (width < 42em) {
+    grid-template-columns: 1fr;
+  }
 }

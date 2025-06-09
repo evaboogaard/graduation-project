@@ -54,7 +54,7 @@ function generateAndApplyCSSVariables(fontSteps) {
 
   fontSteps.forEach((stepObj) => {
     const varName = `--step-${stepObj.step}`;
-    const varValue = stepObj.clamp;
+    const varValue = stepObj.clamp.replace(/vw/g, "cqw");
 
     // Apply the CSS variable to :root
     root.style.setProperty(varName, varValue);
