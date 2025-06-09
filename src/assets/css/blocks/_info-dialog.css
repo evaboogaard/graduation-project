@@ -2,6 +2,8 @@
   border-radius: var(--space-3xs);
   width: min(90vw, 50rem);
   padding: var(--space-m);
+  border: none;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 
   button {
     &:hover {
@@ -21,7 +23,7 @@
   }
 
   &::backdrop {
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(3px);
   }
 
   .info-dialog__content {
