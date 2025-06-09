@@ -27,21 +27,24 @@ document.addEventListener("mousemove", (e) => {
   const gridRect = pageGrid.getBoundingClientRect();
   let offsetX = e.clientX - gridRect.left;
 
+  const dragHandleWidth = 5; // in px
   const minLeftWidth = 100; // in px
-  const maxLeftWidth = gridRect.width - 100 - 5; // 5px drag handle breedte
+  const maxLeftWidth = gridRect.width - 100 - dragHandleWidth;
 
   if (offsetX < minLeftWidth) offsetX = minLeftWidth;
   if (offsetX > maxLeftWidth) offsetX = maxLeftWidth;
 
-  const rightWidth = gridRect.width - offsetX - 5;
+  const leftWidth = offsetX;
+  const rightWidth = gridRect.width - leftWidth - dragHandleWidth;
+  const totalFlexibleWidth = leftWidth + rightWidth;
 
-  // Omzetten naar rem voor styling
-  pageGrid.style.gridTemplateColumns = `${pxToRem(
-    offsetX,
-  )}rem 0.3125rem ${pxToRem(rightWidth)}rem`;
-  // 5px = 0.3125rem
+  const leftFr = leftWidth / totalFlexibleWidth;
+  const rightFr = rightWidth / totalFlexibleWidth;
 
-  // Als rechter kolom breder is dan 50px en aria-expanded is false, zet aria-expanded op true
+  pageGrid.style.gridTemplateColumns = `${leftFr}fr ${pxToRem(
+    dragHandleWidth,
+  )}rem ${rightFr}fr`;
+
   if (
     rightWidth > 50 &&
     mainControlPanelButton.getAttribute("aria-expanded") === "false"

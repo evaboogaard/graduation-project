@@ -3,6 +3,7 @@
   gap: var(--space-l);
   align-items: baseline;
   text-align: justify;
+  margin-bottom: var(--space-s);
 
   p {
     font-size: inherit;

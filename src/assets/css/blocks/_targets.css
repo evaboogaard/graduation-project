@@ -24,7 +24,8 @@ body:has(#p-8:target),
 body:has(#quote-2:target),
 body:has(#double-column-1:target),
 body:has(#p-9:target),
-body:has(#p-10:target) {
+body:has(#p-10:target),
+body:has(#h2-3:target) {
   .main-control-panel__base-controls {
     display: none;
   }
@@ -50,6 +51,7 @@ body:has(#p-8:target) .exception-controls__p-8,
 body:has(#quote-2:target) .exception-controls__quote-2,
 body:has(#double-column-1:target) .exception-controls__double-column-1,
 body:has(#p-9:target) .exception-controls__p-9,
-body:has(#p-10:target) .exception-controls__p-10 {
+body:has(#p-10:target) .exception-controls__p-10,
+body:has(#h2-3:target) .exception-controls__h2-3 {
   display: flex;
 }

@@ -5,6 +5,10 @@ permalink: /
 ---
 <div class="page-grid">
   <article class="page-layout">
+    <button class="dialog-btn" aria-controls="info-dialog">
+      {% icon icon="info", alt="", width="var(--space-s)" %}
+      <span class="sr-only">Information about this webpage</span>
+    </button>
     <h1 class="headline popout"><a class="exception-link" href="#h1-1">Typography: The Art of Making Fonts Fight</a></h1>
     <p class="body popout"><a class="exception-link" href="#p-1">Typography is an ancient and noble craft, dating back to the days when monks meticulously hand-drew letters while cursing their quills. Today, we have the privilege of choosing fonts with a mere click, yet somehow, we still manage to mess it up.</a></p>
 
@@ -79,4 +83,5 @@ permalink: /
   </button>
 
   {% include "partials/blocks/main-control-panel.njk" %}
+  {% include "partials/blocks/dialog.njk" %}
 </div>

@@ -1,0 +1,37 @@
+#info-dialog {
+  border-radius: var(--space-3xs);
+  width: min(90vw, 50rem);
+  padding: var(--space-m);
+
+  button {
+    &:hover {
+      svg {
+        rotate: 90deg;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px dotted var(--color-black);
+      outline-offset: 3px;
+    }
+
+    svg {
+      transition: var(--transition-base);
+    }
+  }
+
+  &::backdrop {
+    backdrop-filter: blur(1px);
+  }
+
+  .info-dialog__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+
+    p,
+    li {
+      font-family: var(--font-controls);
+    }
+  }
+}

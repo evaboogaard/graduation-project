@@ -12,6 +12,7 @@ import "./color-picker.js";
 import "./interaction.js";
 import "./drag-handle.js";
 import "./exceptions.js";
+import "./dialog.js";
 
 import { getColorCSSVariables } from "./color-picker.js";
 import { getButtonCSSVariables } from "./interaction.js";

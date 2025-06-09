@@ -15,19 +15,9 @@ button,
   padding: var(--space-2xs);
   gap: var(--space-2xs);
 
-  svg,
-  .plus {
+  svg {
     transition: var(--transition-base);
-  }
-
-  &:has(.plus) {
-    aspect-ratio: 1;
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-
-  .plus {
-    font-size: 1.5rem;
+    min-width: var(--space-xs);
   }
 
   &:disabled {
@@ -44,8 +34,7 @@ button,
     translate: 3px -3px;
     box-shadow: -3px 3px 0 var(--color-white);
 
-    svg,
-    .plus {
+    svg {
       rotate: 90deg;
     }
   }
@@ -161,5 +150,28 @@ button,
 
   100% {
     rotate: 0;
+  }
+}
+
+.dialog-btn {
+  color: var(--color-headline);
+  position: fixed;
+  top: var(--space-s);
+  left: var(--space-s);
+  padding: var(--space-3xs);
+  border: 1px solid var(--color-body);
+  border-radius: var(--space-3xs);
+  transition: var(--transition-base);
+
+  svg {
+    transition: var(--transition-base);
+  }
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-headline), #0000 90%);
+
+    svg {
+      rotate: 1turn;
+    }
   }
 }
