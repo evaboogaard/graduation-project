@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
           valueDisplay.textContent = value;
           targetLink.style.setProperty(`--line-height-${id}`, value);
         }
-        updateLineHeight();
+        // updateLineHeight();
         slider.addEventListener("input", updateLineHeight);
       }
     });
