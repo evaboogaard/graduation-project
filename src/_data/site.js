@@ -6,5 +6,5 @@ export default {
   authorName: "Eva Boogaard",
   url: process.env.NODE_ENV === "production" ? productionUrl : developmentUrl,
   authorEmail: "evaboogaard@hotmail.com",
-  metaDesc: "A simple and responsive design system tool in the browser",
+  metaDesc: "An experiment for a visual design tool in the browser.",
 };
