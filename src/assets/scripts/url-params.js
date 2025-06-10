@@ -25,6 +25,10 @@ const colorPairs = [
     color: document.getElementById("background-color"),
     hex: document.getElementById("background-hex"),
   },
+  {
+    color: document.getElementById("secondary-text-color"),
+    hex: document.getElementById("secondary-text-hex"),
+  },
 ];
 function updateURL() {
   const sliderValues = sliders.map((s) => s.value);

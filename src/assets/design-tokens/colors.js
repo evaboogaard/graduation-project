@@ -2,7 +2,7 @@ export const colors = {
   black: "#000",
   white: "#fff",
   headline: "#003f31",
-  "secondary-background": "#1b9761",
+  "secondary-background": "#148554",
   "secondary-text": "#ffffff",
   body: "#000000",
   background: "#faf4ed",
