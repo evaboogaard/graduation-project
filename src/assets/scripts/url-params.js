@@ -14,8 +14,8 @@ const colorPairs = [
     hex: document.getElementById("headline-hex"),
   },
   {
-    color: document.getElementById("details-color"),
-    hex: document.getElementById("details-hex"),
+    color: document.getElementById("secondary-background-color"),
+    hex: document.getElementById("secondary-background-hex"),
   },
   {
     color: document.getElementById("body-color"),

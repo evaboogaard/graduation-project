@@ -2,7 +2,7 @@ const productionUrl = "https://9elements.com";
 const developmentUrl = "http://localhost:8080";
 
 export default {
-  name: "Design System Tool",
+  name: "Graduation Project",
   authorName: "Eva Boogaard",
   url: process.env.NODE_ENV === "production" ? productionUrl : developmentUrl,
   authorEmail: "evaboogaard@hotmail.com",

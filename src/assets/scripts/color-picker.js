@@ -46,6 +46,15 @@ function checkAllContrasts() {
     showContrastWarning(id, ratio);
   });
 
+  const secondaryBg = hexToRgb(
+    document.getElementById("secondary-background-color").value,
+  );
+  const secondaryText = hexToRgb(
+    document.getElementById("secondary-text-color").value,
+  );
+  const secondaryRatio = getContrastRatio(secondaryText, secondaryBg);
+  showContrastWarning("secondary-text", secondaryRatio);
+
   const btnBg = hexToRgb(document.getElementById("btn-default-bg-color").value);
   const btnText = hexToRgb(
     document.getElementById("btn-default-text-color").value,
@@ -87,7 +96,8 @@ function checkAllContrasts() {
 
 const colors = [
   { id: "headline", cssVar: "--color-headline" },
-  { id: "details", cssVar: "--color-details" },
+  { id: "secondary-background", cssVar: "--color-secondary-background" },
+  { id: "secondary-text", cssVar: "--color-secondary-text" },
   { id: "body", cssVar: "--color-body" },
   { id: "background", cssVar: "--color-background" },
   { id: "btn-default-bg", cssVar: "--color-btn-default-bg" },
@@ -139,7 +149,7 @@ function setupColorSync(colorInputId, hexInputId) {
 
   const excludeFromStorage = new Set([
     "headline-color",
-    "details-color",
+    "secondary-background-color",
     "body-color",
     "background-color",
   ]);
@@ -189,7 +199,8 @@ colors.forEach(({ id, cssVar }) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   setupColorSync("headline-color", "headline-hex");
-  setupColorSync("details-color", "details-hex");
+  setupColorSync("secondary-background-color", "secondary-background-hex");
+  setupColorSync("secondary-text-color", "secondary-text-hex");
   setupColorSync("body-color", "body-hex");
   setupColorSync("background-color", "background-hex");
   setupColorSync("btn-default-bg-color", "btn-default-bg-hex");

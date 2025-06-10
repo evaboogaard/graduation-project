@@ -227,7 +227,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  accent-color: var(--color-details);
+  accent-color: var(--color-secondary-background);
 }
 
 :is(h1, .h1-styling, h2, .h2-styling, h3, .h3-styling, h4, .h4-styling):not(
@@ -302,11 +302,11 @@ p,
 }
 
 .full-width {
-  background-color: var(--color-details);
+  background-color: var(--color-secondary-background);
 }
 
 .quote {
-  color: #fff;
+  color: var(--color-secondary-text);
   font-size: var(--step-4);
   padding-inline: 0;
   line-height: 1.4;
@@ -317,8 +317,8 @@ p,
 .alert {
   --stack-space: 2em;
   font-size: var(--step-0);
-  background: var(--color-details);
-  color: #fff;
+  background: var(--color-secondary-background);
+  color: var(--color-secondary-text);
   padding: 1.375em 1.25em;
   border-radius: 0.75em;
   position: relative;
