@@ -68,38 +68,30 @@
     <div>
         <h3 class="pb-2xs">Text Alignment</h3>
         <select name="text-align" id="text-align-{{ block.id }}">
-            <option value="start">
-                <span>Start</span>
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </option>
-            <option value="end">
-                <span>End</span>
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </option>
-            <option value="center">
-                <span>Center</span>
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </option>
-            <option value="justify">
-                <span>Justify</span>
-                <div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </option>
+        <option value="start" {% if block.id != 'quote-1' %}selected{% endif %}>
+            <span>Start</span>
+            <div>
+            <span></span><span></span><span></span>
+            </div>
+        </option>
+        <option value="end">
+            <span>End</span>
+            <div>
+            <span></span><span></span><span></span>
+            </div>
+        </option>
+        <option value="center" {% if block.id == 'quote-1' %}selected{% endif %}>
+            <span>Center</span>
+            <div>
+            <span></span><span></span><span></span>
+            </div>
+        </option>
+        <option value="justify">
+            <span>Justify</span>
+            <div>
+            <span></span><span></span><span></span>
+            </div>
+        </option>
         </select>
     </div>
 

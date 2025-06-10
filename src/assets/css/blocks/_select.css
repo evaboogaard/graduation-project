@@ -95,6 +95,8 @@
 
 select[name="text-align"] {
   cursor: pointer;
+  padding: 0.35rem var(--space-2xs);
+  width: 100%;
 
   &,
   &::picker(select) {
